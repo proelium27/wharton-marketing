@@ -1,16 +1,11 @@
 # assets
 
-## The example
+## The case study photos
 
-`example/1.jpg` through `example/6.jpg` are the photos the site loads on open, so
-every visitor sees the same example on any computer without uploading anything.
+`example/1.jpg` through `example/6.jpg` are the photos shown in panel 01. They are
+plain `<img>` tags in `index.html`, so they work over HTTP and straight off the disk.
 
-To change it, drop new photos in and list them in the `EXAMPLE` block at the top of
-`app.js`. The business name and tagline live in that same block. They are placeholder
-wording written to suit the truck photos, not a real client's copy.
-
-The example needs the page served over HTTP. Opened straight off the disk as a
-`file://` URL the browser blocks the fetches and the form starts empty.
+To change them, drop new files in and edit the `.gallery` list in `index.html`.
 
 ## The advertisement video
 
@@ -20,20 +15,22 @@ Put your finished advertisement here, named exactly:
 advertisement.mp4
 ```
 
-That is it. Nothing else to change. When someone fills in the form and presses
-**Generate advertisement**, the page looks for this file and plays it in the output
-frame. Until the file exists, the output panel shows a labelled empty video slot,
-which is the intended state for now.
+That is it. Nothing else to change. The page looks for this file on load and shows it
+in the frame in panel 02, with a download link beneath. Until the file exists the
+frame reads **"Your advertisement"**, which is the intended state for now.
 
 To use a different filename or format, change `VIDEO_PATH` at the top of `app.js`.
 
 **Format:** MP4 with H.264 video and AAC audio plays in every browser. A `.webm`
 file also works if you change `VIDEO_PATH` to match.
 
-**Note:** browsers block local file reads over `file://`, so the automatic lookup
-only works when the page is served over HTTP (see the README in the project root).
-When you open `index.html` directly by double-clicking it, use the **Load a video
-file** button in the output panel instead. That works everywhere.
+**Shape:** the frame is set to 9:16 to match the portrait source footage. A video of
+a different shape will sit letterboxed inside it. Change `data-ratio` on `.frame` in
+`index.html`, and section D and the meta strip alongside it, if the size changes.
+
+**Note:** the **Load a video file** button in the frame is a temporary convenience
+for previewing before the file is committed. Once `advertisement.mp4` is in the
+repository the button never appears, and the marked block in `app.js` can be deleted.
 
 ## The logo
 

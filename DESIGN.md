@@ -64,16 +64,24 @@ rule separates them; panels do not float as cards.
 
 ## Components
 
-Every interactive element ships default, hover, focus-visible, active, and disabled.
-Focus is a 2px `--navy` outline at 2px offset, square.
+The page is a case study, so nearly everything is printed content rather than a
+control. What the client supplied is set in `.value` at `--t-md`, under an uppercase
+`--t-xs` label. Photos are a square-cropped grid at 1px hairline borders.
 
-Buttons: 1px border, square, uppercase `--t-xs`. Primary is filled navy; secondary is
-navy text on paper with a navy border; both flip to `--navy-deep` on hover.
+The only controls are the language toggle and the temporary video loader. Each ships
+default, hover, focus-visible, and active. Focus is a 2px `--navy` outline at 2px
+offset, square.
+
+Buttons: 1px border, square, uppercase `--t-xs`, navy text on paper, flipping to
+`--navy-deep` on hover.
+
+Do not add form controls. Text inputs, selects, radios, and submit buttons all imply
+the page performs the service, which it does not.
 
 ## Motion
 
-160ms `cubic-bezier(0.22, 1, 0.36, 1)` on color and border transitions only. The
-processing progress bar animates width. Nothing else moves. No page-load choreography.
+160ms `cubic-bezier(0.22, 1, 0.36, 1)` on color and border transitions only. Nothing
+else moves. No page-load choreography, and never anything resembling progress.
 
 ## Copy
 

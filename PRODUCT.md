@@ -10,11 +10,15 @@ here is what a client hands over (product photos, their Chinese brand name and
 tagline, their industry, the video size they need), and here is the advertisement
 the team hands back.
 
-**The page never generates anything.** It has no automation behind it and must never
-imply it does. Submitting a brief acknowledges the brief; it does not produce a file.
-There is no progress bar, no rendering sequence, no language suggesting software made
-the advertisement. Getting this wrong misrepresents the business as an ad generator,
-which it is not.
+**The page never generates anything, and it is not a form.** It has no automation
+behind it and must never imply it does. There is nothing to fill in, nothing to
+submit, no progress bar, no rendering sequence, and no language suggesting software
+made the advertisement. Getting this wrong misrepresents the business as an ad
+generator, which it is not.
+
+The one worked example is fixed content: a real client's photos and wording on the
+left, the advertisement on the right. A reader understands the service by seeing one
+complete instance of it, not by operating a tool.
 
 This repository is the frontend demo used for the Wharton Global Youth Program
 business-plan pitch. There is no backend. The advertisement is supplied manually.
@@ -30,7 +34,8 @@ product
 Reads Chinese first, English second or not at all. Has a phone full of product
 photos and no brand assets. Has been told American customers "want something
 different" but has not been told what. Cautious about spending money with a foreign
-agency. Uses this once or twice per campaign, not daily.
+agency. Reads this page once, before deciding whether to make contact, and needs to
+see in one screen exactly what the exchange involves.
 
 **Secondary: the pitch audience.** Program judges and peers who will land on this
 cold, with no explanation, and need to understand the business in under ten seconds.
@@ -71,8 +76,10 @@ no shadows, no rounded buttons, no decorative imagery.
    and tagline fields accept Chinese and treat it as the source of truth.
 3. **One screen.** Input on the left, output on the right. No navigation, no
    marketing sections, nothing to scroll past.
-4. **Every state is designed.** Empty, dragging, invalid file, brief submitted,
-   delivered, and no-video-yet all have a considered treatment.
+4. **Nothing is interactive except the language toggle.** No inputs, no buttons that
+   act on content, nothing a reader could mistake for self-serve software. The only
+   exception is the temporary control for loading the advertisement, which
+   disappears once the file is committed.
 5. **Never claim automation.** No progress bars, no rendering steps, no wording that
    suggests the advertisement is produced by this page. People make the ad.
 5. **Placeholders stay obviously placeholder.** Bracketed and labelled, so no one

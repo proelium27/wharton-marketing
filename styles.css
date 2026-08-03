@@ -46,8 +46,8 @@
 
 html { -webkit-text-size-adjust: 100%; }
 
-/* Several components below set display: flex/grid, which would otherwise beat
-   the [hidden] attribute's user-agent display: none. This keeps hidden hidden. */
+/* Several components set display: flex/grid, which would otherwise beat the
+   [hidden] attribute's user-agent display: none. This keeps hidden hidden. */
 [hidden] { display: none !important; }
 
 body {
@@ -63,8 +63,7 @@ body {
 }
 
 img, video { display: block; max-width: 100%; }
-button, input, select { font: inherit; color: inherit; }
-fieldset { border: 0; }
+button, input { font: inherit; color: inherit; }
 ul { list-style: none; }
 
 :focus-visible {
@@ -85,7 +84,6 @@ ul { list-style: none; }
 }
 .skip-link:focus { left: 0; }
 
-/* Shared micro-label */
 .micro {
   font-size: var(--t-xs);
   font-weight: 600;
@@ -186,9 +184,9 @@ ul { list-style: none; }
 }
 .panel-title { font-size: var(--t-md); font-weight: 600; letter-spacing: -0.01em; }
 
-/* ---------- Form ---------- */
+/* ---------- Sections ---------- */
 .field-group { margin-bottom: var(--s7); }
-.field-group:last-of-type { margin-bottom: var(--s6); }
+.field-group--last { margin-bottom: 0; }
 
 .legend {
   display: flex;
@@ -223,163 +221,31 @@ ul { list-style: none; }
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink-2);
-  margin-bottom: var(--s3);
+  margin-bottom: var(--s2);
 }
 
-.input {
-  width: 100%;
-  background: var(--paper);
-  border: 1px solid var(--rule-strong);
-  padding: var(--s3) var(--s3);
-  font-size: var(--t-base);
-  transition: border-color var(--dur) var(--ease);
-}
-.input::placeholder { color: var(--ink-3); }
-.input:hover { border-color: var(--ink-2); }
-.input:focus-visible { border-color: var(--navy); outline-offset: 0; }
-
-.select-wrap { position: relative; }
-.select {
-  appearance: none;
-  -webkit-appearance: none;
-  padding-right: var(--s7);
-  cursor: pointer;
-}
-/* Square chevron, drawn as a rotated hairline square */
-.select-wrap::after {
-  content: "";
-  position: absolute;
-  right: var(--s4);
-  top: 50%;
-  width: 7px; height: 7px;
-  border-right: 1px solid var(--ink);
-  border-bottom: 1px solid var(--ink);
-  transform: translateY(-70%) rotate(45deg);
-  pointer-events: none;
-}
-
-.help {
-  font-size: var(--t-sm);
-  color: var(--ink-2);
-  margin-top: var(--s2);
-  max-width: 62ch;
-}
-.counter { color: var(--ink-3); font-variant-numeric: tabular-nums; }
-
-.error {
-  font-size: var(--t-sm);
-  color: var(--danger);
-  border-left: 1px solid var(--danger);
-  padding-left: var(--s3);
-  margin-top: var(--s3);
-}
-
-/* ---------- Dropzone ---------- */
-.file-input {
-  position: absolute; width: 1px; height: 1px;
-  opacity: 0; pointer-events: none;
-}
-
-.dropzone {
-  border: 1px dashed var(--rule-strong);
-  background: var(--panel);
-  transition: border-color var(--dur) var(--ease), background var(--dur) var(--ease);
-}
-.dropzone:hover { border-color: var(--navy); }
-.dropzone.is-dragging {
-  border-color: var(--navy);
-  border-style: solid;
-  background: var(--navy-tint);
-}
-.dropzone:focus-within { outline: 2px solid var(--navy); outline-offset: 2px; }
-
-.dropzone-label {
-  display: flex;
-  flex-direction: column;
-  gap: var(--s2);
-  align-items: center;
-  text-align: center;
-  padding: var(--s7) var(--s4);
-  cursor: pointer;
-}
-.dropzone-primary { font-size: var(--t-base); color: var(--ink); }
-.dropzone-meta { font-size: var(--t-sm); color: var(--ink-2); }
-
-.thumbs-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--s4);
-  margin-top: var(--s4);
-  padding-bottom: var(--s2);
-  border-bottom: 1px solid var(--rule);
-}
-
-.link-btn {
-  background: none;
-  border: 0;
-  padding: 0;
-  font-size: var(--t-xs);
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--navy);
-  cursor: pointer;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-.link-btn:hover { color: var(--navy-deep); }
-
-.thumbs {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
-  gap: var(--s2);
-  margin-top: var(--s3);
-}
-.thumb { position: relative; border: 1px solid var(--rule); }
-.thumb img { width: 100%; aspect-ratio: 1; object-fit: cover; }
-.thumb-index {
-  position: absolute; left: 0; top: 0;
-  background: var(--ink);
-  color: var(--paper);
-  font-size: 0.5625rem;
-  font-weight: 600;
-  padding: 2px 5px;
-  font-variant-numeric: tabular-nums;
-}
-.thumb-remove {
-  position: absolute; right: 0; top: 0;
-  width: 20px; height: 20px;
-  display: grid; place-items: center;
-  background: var(--paper);
+/* What the client supplied, printed rather than entered */
+.value {
+  font-size: var(--t-md);
   color: var(--ink);
-  border: 0;
-  border-left: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-  font-size: var(--t-sm);
-  line-height: 1;
-  cursor: pointer;
-  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+  line-height: 1.35;
 }
-.thumb-remove:hover { background: var(--danger); color: var(--paper); }
 
-/* ---------- Aspect ratio picker ---------- */
-.ratios {
+/* ---------- Photo gallery ---------- */
+.gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
   gap: var(--s2);
 }
-.ratio {
-  display: flex;
-  align-items: center;
-  gap: var(--s3);
-  padding: var(--s3);
-  border: 1px solid var(--rule-strong);
-  cursor: pointer;
-  transition: border-color var(--dur) var(--ease), background var(--dur) var(--ease);
+.gallery li { border: 1px solid var(--rule); }
+.gallery img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
 }
-.ratio:hover { border-color: var(--navy); }
-.ratio input { position: absolute; opacity: 0; width: 0; height: 0; }
+
+/* ---------- Video size, shown not chosen ---------- */
+.size { display: flex; align-items: center; gap: var(--s3); }
 
 .ratio-box {
   width: 34px; height: 30px;
@@ -389,26 +255,14 @@ ul { list-style: none; }
 }
 .ratio-shape {
   width: var(--w); height: var(--h);
-  border: 1px solid var(--ink-2);
-  transition: border-color var(--dur) var(--ease), background var(--dur) var(--ease);
+  border: 1px solid var(--navy);
+  background: var(--navy);
 }
-.ratio-text { display: flex; flex-direction: column; line-height: 1.25; min-width: 0; }
-.ratio-text strong { font-size: var(--t-sm); font-variant-numeric: tabular-nums; }
-.ratio-text span { font-size: var(--t-xs); color: var(--ink-2); }
-
-/* Selected state. The .is-selected class is set by app.js so this works
-   without :has(); the :has() rules keep it correct if scripting is slow. */
-.ratio.is-selected,
-.ratio:has(input:checked) { border-color: var(--navy); background: var(--navy-tint); }
-
-.ratio.is-selected .ratio-shape,
-.ratio:has(input:checked) .ratio-shape { border-color: var(--navy); background: var(--navy); }
-
-.ratio:has(input:focus-visible) { outline: 2px solid var(--navy); outline-offset: 2px; }
+.ratio-text { display: flex; flex-direction: column; line-height: 1.25; }
+.ratio-text strong { font-size: var(--t-md); font-weight: 600; font-variant-numeric: tabular-nums; }
+.ratio-text span { font-size: var(--t-sm); color: var(--ink-2); }
 
 /* ---------- Buttons ---------- */
-.actions { display: flex; gap: var(--s2); flex-wrap: wrap; }
-
 .btn {
   display: inline-flex;
   align-items: center;
@@ -428,21 +282,8 @@ ul { list-style: none; }
               color var(--dur) var(--ease);
 }
 .btn--sm { padding: var(--s2) var(--s4); }
-
-.btn--primary { background: var(--navy); color: var(--paper); }
-.btn--primary:hover { background: var(--navy-deep); border-color: var(--navy-deep); }
-.btn--primary:active { background: var(--ink); border-color: var(--ink); }
-
 .btn--ghost:hover { background: var(--navy-tint); border-color: var(--navy-deep); color: var(--navy-deep); }
 .btn--ghost:active { background: var(--navy); color: var(--paper); }
-
-.btn:disabled,
-.btn[aria-disabled="true"] {
-  background: var(--paper);
-  border-color: var(--rule-strong);
-  color: var(--ink-3);
-  cursor: not-allowed;
-}
 
 /* ---------- Output meta ---------- */
 .meta {
@@ -478,7 +319,6 @@ ul { list-style: none; }
   display: grid;
   place-items: center;
   overflow: hidden;
-  transition: max-width var(--dur) var(--ease);
 }
 .frame[data-ratio="16:9"] { aspect-ratio: 16 / 9;  max-width: 100%;   }
 .frame[data-ratio="1:1"]  { aspect-ratio: 1 / 1;   max-width: 460px;  }
@@ -487,7 +327,6 @@ ul { list-style: none; }
 
 .state {
   grid-area: 1 / 1;
-  width: 100%;
   padding: var(--s5);
   text-align: center;
   display: flex;
@@ -496,33 +335,33 @@ ul { list-style: none; }
   justify-content: center;
   gap: var(--s2);
 }
-.state[hidden] { display: none; }
 
-.state-title { font-size: var(--t-sm); font-weight: 600; }
-.state-body { font-size: var(--t-sm); color: var(--ink-2); max-width: 42ch; }
-
-.state--idle .state-title { color: var(--ink-2); }
-
-.state--slot {
+.state--empty {
   border: 1px dashed var(--rule-strong);
   margin: var(--s4);
-  width: auto;
   align-self: stretch;
   justify-self: stretch;
 }
-.state--slot.is-dragging { border-color: var(--navy); border-style: solid; background: var(--navy-tint); }
+.state--empty.is-dragging {
+  border-color: var(--navy);
+  border-style: solid;
+  background: var(--navy-tint);
+}
 
+.state-title { font-size: var(--t-sm); font-weight: 600; color: var(--ink-2); }
 .slot-actions { margin-top: var(--s3); }
 
-/* Acknowledges a submitted brief. Never implies anything was generated. */
-.confirm {
-  margin-top: var(--s4);
-  padding: var(--s3) var(--s4);
-  border: 1px solid var(--navy);
-  background: var(--navy-tint);
-  color: var(--navy);
+.file-input {
+  position: absolute; width: 1px; height: 1px;
+  opacity: 0; pointer-events: none;
+}
+
+.error {
   font-size: var(--t-sm);
-  max-width: 62ch;
+  color: var(--danger);
+  border: 1px solid var(--danger);
+  padding: var(--s2) var(--s3);
+  margin-top: var(--s3);
 }
 
 .ad-video {
@@ -532,7 +371,6 @@ ul { list-style: none; }
   object-fit: contain;
   background: var(--ink);
 }
-.ad-video[hidden] { display: none; }
 
 .stage-foot {
   display: flex;

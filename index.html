@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>East to West — Marketing Agency</title>
-<meta name="description" content="Upload product photography and receive a finished advertising video built for the American market.">
+<meta name="description" content="What a client provides, and the advertisement East to West hands back.">
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<a class="skip-link" href="#panel-input" data-i18n="skip">Skip to the form</a>
+<a class="skip-link" href="#panel-input" data-i18n="skip">Skip to the case study</a>
 
 <header class="site-header">
   <div class="brand">
@@ -30,7 +30,7 @@
 
 <main class="workspace">
 
-  <!-- ============================ INPUT ============================ -->
+  <!-- ============================ 01 ============================ -->
   <section class="panel panel--input" id="panel-input" aria-labelledby="input-title">
     <div class="panel-head">
       <span class="panel-num" aria-hidden="true">01</span>
@@ -39,112 +39,55 @@
       </div>
     </div>
 
-    <form class="form" id="brief-form" novalidate>
+    <!-- A. Photos -->
+    <div class="field-group">
+      <h3 class="legend"><span class="legend-key">A</span><span data-i18n="secImages">Product images</span></h3>
+      <ul class="gallery">
+        <li><img src="assets/example/1.jpg" data-photo="1" alt="" loading="lazy"></li>
+        <li><img src="assets/example/2.jpg" data-photo="2" alt="" loading="lazy"></li>
+        <li><img src="assets/example/3.jpg" data-photo="3" alt="" loading="lazy"></li>
+        <li><img src="assets/example/4.jpg" data-photo="4" alt="" loading="lazy"></li>
+        <li><img src="assets/example/5.jpg" data-photo="5" alt="" loading="lazy"></li>
+        <li><img src="assets/example/6.jpg" data-photo="6" alt="" loading="lazy"></li>
+      </ul>
+    </div>
 
-      <!-- A. Images -->
-      <fieldset class="field-group">
-        <legend class="legend"><span class="legend-key">A</span><span data-i18n="secImages">Product images</span></legend>
+    <!-- B. Brand -->
+    <div class="field-group">
+      <h3 class="legend"><span class="legend-key">B</span><span data-i18n="secBrand">Your brand, in Chinese</span></h3>
 
-        <div class="dropzone" id="dropzone">
-          <input type="file" id="file-input" class="file-input" accept="image/*" multiple>
-          <label class="dropzone-label" for="file-input">
-            <span class="dropzone-primary" data-i18n="dropPrimary">Drag images here, or select files</span>
-            <span class="dropzone-meta" data-i18n="dropMeta">JPG, PNG, WEBP or GIF · up to 10 MB each · 12 images maximum</span>
-          </label>
-        </div>
-
-        <p class="error" id="file-error" role="alert" hidden></p>
-
-        <div class="thumbs-head" id="thumbs-head" hidden>
-          <span class="micro" id="thumb-count"></span>
-          <button type="button" class="link-btn" id="clear-images" data-i18n="removeAll">Remove all</button>
-        </div>
-        <ul class="thumbs" id="thumbs"></ul>
-      </fieldset>
-
-      <!-- B. Brand -->
-      <fieldset class="field-group">
-        <legend class="legend"><span class="legend-key">B</span><span data-i18n="secBrand">Your brand, in Chinese</span></legend>
-
-        <div class="field">
-          <label class="label" for="biz-name" data-i18n="labelName">Business name 公司名称</label>
-          <input class="input" type="text" id="biz-name" name="bizName" lang="zh" autocomplete="organization"
-                 maxlength="40" placeholder="苏州手工茶行" data-i18n-ph="phName">
-        </div>
-
-        <div class="field">
-          <label class="label" for="tagline" data-i18n="labelTagline">Tagline 标语</label>
-          <input class="input" type="text" id="tagline" name="tagline" lang="zh"
-                 maxlength="60" placeholder="三代人的手艺" data-i18n-ph="phTagline">
-          <p class="help"><span class="counter" id="tagline-count">0 / 60</span></p>
-        </div>
-      </fieldset>
-
-      <!-- C. Industry -->
-      <fieldset class="field-group">
-        <legend class="legend"><span class="legend-key">C</span><span data-i18n="secIndustry">Industry</span></legend>
-        <div class="field">
-          <label class="label sr-only" for="industry" data-i18n="secIndustry">Industry</label>
-          <div class="select-wrap">
-            <select class="input select" id="industry" name="industry">
-              <option value="" data-i18n="indChoose">Select an industry</option>
-              <option value="food" data-i18n="indFood">Restaurant &amp; prepared food</option>
-              <option value="tea" data-i18n="indTea">Tea &amp; beverage</option>
-              <option value="textiles" data-i18n="indTextiles">Textiles &amp; apparel</option>
-              <option value="electronics" data-i18n="indElectronics">Consumer electronics</option>
-              <option value="home" data-i18n="indHome">Home &amp; kitchen goods</option>
-              <option value="beauty" data-i18n="indBeauty">Beauty &amp; personal care</option>
-              <option value="manufacturing" data-i18n="indManufacturing">Manufacturing &amp; OEM</option>
-              <option value="other" data-i18n="indOther">Something else</option>
-            </select>
-          </div>
-        </div>
-      </fieldset>
-
-      <!-- D. Platform -->
-      <fieldset class="field-group">
-        <legend class="legend"><span class="legend-key">D</span><span data-i18n="secPlatform">Video size</span></legend>
-
-        <div class="ratios" role="radiogroup" aria-labelledby="platform-label">
-          <span id="platform-label" class="sr-only" data-i18n="secPlatform">Video size</span>
-
-          <label class="ratio">
-            <input type="radio" name="platform" value="16:9" checked data-platform="YouTube &amp; web" data-platform-zh="YouTube 与网页">
-            <span class="ratio-box"><span class="ratio-shape" style="--w:32px;--h:18px"></span></span>
-            <span class="ratio-text"><strong>16:9</strong><span data-i18n="platYoutube">YouTube &amp; web</span></span>
-          </label>
-
-          <label class="ratio">
-            <input type="radio" name="platform" value="1:1" data-platform="Instagram feed" data-platform-zh="Instagram 信息流">
-            <span class="ratio-box"><span class="ratio-shape" style="--w:24px;--h:24px"></span></span>
-            <span class="ratio-text"><strong>1:1</strong><span data-i18n="platFeed">Instagram feed</span></span>
-          </label>
-
-          <label class="ratio">
-            <input type="radio" name="platform" value="4:5" data-platform="Instagram portrait" data-platform-zh="Instagram 竖版">
-            <span class="ratio-box"><span class="ratio-shape" style="--w:21px;--h:26px"></span></span>
-            <span class="ratio-text"><strong>4:5</strong><span data-i18n="platPortrait">Instagram portrait</span></span>
-          </label>
-
-          <label class="ratio">
-            <input type="radio" name="platform" value="9:16" data-platform="TikTok &amp; Reels" data-platform-zh="TikTok 与 Reels">
-            <span class="ratio-box"><span class="ratio-shape" style="--w:16px;--h:28px"></span></span>
-            <span class="ratio-text"><strong>9:16</strong><span data-i18n="platReels">TikTok &amp; Reels</span></span>
-          </label>
-        </div>
-      </fieldset>
-
-      <div class="actions">
-        <button type="submit" class="btn btn--primary" id="submit-btn" disabled data-i18n="submit">Submit brief</button>
-        <button type="reset" class="btn btn--ghost" id="reset-btn" data-i18n="reset">Reset</button>
+      <div class="field">
+        <p class="label" data-i18n="labelName">Business name 公司名称</p>
+        <p class="value" lang="zh">东方商用车</p>
       </div>
 
-      <p class="confirm" id="confirm" role="status" hidden></p>
+      <div class="field">
+        <p class="label" data-i18n="labelTagline">Tagline 标语</p>
+        <p class="value" lang="zh">载得动，跑得远</p>
+      </div>
+    </div>
 
-    </form>
+    <!-- C. Industry -->
+    <div class="field-group">
+      <h3 class="legend"><span class="legend-key">C</span><span data-i18n="secIndustry">Industry</span></h3>
+      <p class="value" data-i18n="indManufacturing">Manufacturing &amp; OEM</p>
+    </div>
+
+    <!-- D. Video size -->
+    <div class="field-group field-group--last">
+      <h3 class="legend"><span class="legend-key">D</span><span data-i18n="secPlatform">Video size</span></h3>
+      <div class="size">
+        <span class="ratio-box" aria-hidden="true"><span class="ratio-shape" style="--w:16px;--h:28px"></span></span>
+        <span class="ratio-text">
+          <strong>9:16</strong>
+          <span data-i18n="platReels">TikTok &amp; Reels</span>
+        </span>
+      </div>
+    </div>
+
   </section>
 
-  <!-- ============================ OUTPUT ============================ -->
+  <!-- ============================ 02 ============================ -->
   <section class="panel panel--output" aria-labelledby="output-title">
     <div class="panel-head">
       <span class="panel-num" aria-hidden="true">02</span>
@@ -156,41 +99,35 @@
     <dl class="meta">
       <div class="meta-cell">
         <dt class="micro" data-i18n="metaBrand">Brand</dt>
-        <dd id="meta-brand" lang="zh">—</dd>
+        <dd lang="zh">东方商用车</dd>
       </div>
       <div class="meta-cell">
         <dt class="micro" data-i18n="metaIndustry">Industry</dt>
-        <dd id="meta-industry">—</dd>
+        <dd data-i18n="indManufacturing">Manufacturing &amp; OEM</dd>
       </div>
       <div class="meta-cell">
-        <dt class="micro" data-i18n="metaPlatform">Platform</dt>
-        <dd id="meta-platform">YouTube &amp; web</dd>
+        <dt class="micro" data-i18n="metaPlatform">Video size</dt>
+        <dd>9:16</dd>
       </div>
       <div class="meta-cell">
         <dt class="micro" data-i18n="metaSource">Source images</dt>
-        <dd id="meta-count">0</dd>
+        <dd data-i18n="sourceCount">6 images</dd>
       </div>
     </dl>
 
     <div class="stage">
-      <div class="frame" id="frame" data-ratio="16:9">
+      <div class="frame" data-ratio="9:16">
 
-        <!-- STATE: idle -->
-        <div class="state state--idle" id="state-idle">
-          <p class="state-title" data-i18n="idleTitle">No advertisement yet</p>
-        </div>
-
-        <!-- STATE: no video file present -->
-        <div class="state state--slot" id="state-slot" hidden>
-          <p class="state-title" data-i18n="slotTitle">Video slot</p>
+        <!-- Shown until assets/advertisement.mp4 exists -->
+        <div class="state state--empty" id="state-empty">
+          <p class="state-title" data-i18n="emptyTitle">Your advertisement</p>
           <div class="slot-actions">
             <button type="button" class="btn btn--ghost btn--sm" id="pick-video" data-i18n="pickVideo">Load a video file</button>
           </div>
-          <p class="error" id="video-error" role="alert" hidden></p>
           <input type="file" id="video-input" class="file-input" accept="video/*">
+          <p class="error" id="video-error" role="alert" hidden></p>
         </div>
 
-        <!-- STATE: delivered, video playing -->
         <video id="ad-video" class="ad-video" controls playsinline preload="metadata" hidden></video>
 
       </div>
