@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>[ COMPANY NAME ] — Client Platform</title>
+<meta name="description" content="Upload product photography and receive a finished advertising video built for the American market.">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#panel-input" data-i18n="skip">Skip to the form</a>
+
+<header class="site-header">
+  <div class="brand">
+    <!-- PLACEHOLDER LOGO: replace this block with an <img src="assets/logo.svg" alt="..."> -->
+    <div class="brand-mark" aria-hidden="true">LOGO</div>
+    <div class="brand-text">
+      <!-- PLACEHOLDER NAME: replace the bracketed strings below -->
+      <h1 class="brand-name">[ COMPANY NAME ]</h1>
+      <p class="brand-role" data-i18n="brandRole">Client Platform</p>
+    </div>
+  </div>
+
+  <div class="lang" role="group" aria-label="Language / 语言">
+    <button type="button" class="lang-btn is-active" data-lang="en" aria-pressed="true">EN</button>
+    <button type="button" class="lang-btn" data-lang="zh" aria-pressed="false">中文</button>
+  </div>
+</header>
+
+<main class="workspace">
+
+  <!-- ============================ INPUT ============================ -->
+  <section class="panel panel--input" id="panel-input" aria-labelledby="input-title">
+    <div class="panel-head">
+      <span class="panel-num" aria-hidden="true">01</span>
+      <div>
+        <h2 class="panel-title" id="input-title" data-i18n="inputTitle">Input</h2>
+        <p class="panel-note" data-i18n="inputNote">Your photos and your brand, exactly as they are today.</p>
+      </div>
+    </div>
+
+    <form class="form" id="brief-form" novalidate>
+
+      <!-- A. Images -->
+      <fieldset class="field-group">
+        <legend class="legend"><span class="legend-key">A</span><span data-i18n="secImages">Product images</span></legend>
+
+        <div class="dropzone" id="dropzone">
+          <input type="file" id="file-input" class="file-input" accept="image/*" multiple>
+          <label class="dropzone-label" for="file-input">
+            <span class="dropzone-primary" data-i18n="dropPrimary">Drag images here, or select files</span>
+            <span class="dropzone-meta" data-i18n="dropMeta">JPG, PNG, WEBP or GIF · up to 10 MB each · 12 images maximum</span>
+          </label>
+        </div>
+
+        <p class="error" id="file-error" role="alert" hidden></p>
+
+        <div class="thumbs-head" id="thumbs-head" hidden>
+          <span class="micro" id="thumb-count"></span>
+          <button type="button" class="link-btn" id="clear-images" data-i18n="removeAll">Remove all</button>
+        </div>
+        <ul class="thumbs" id="thumbs"></ul>
+      </fieldset>
+
+      <!-- B. Brand -->
+      <fieldset class="field-group">
+        <legend class="legend"><span class="legend-key">B</span><span data-i18n="secBrand">Your brand, in Chinese</span></legend>
+
+        <div class="field">
+          <label class="label" for="biz-name" data-i18n="labelName">Business name 公司名称</label>
+          <input class="input" type="text" id="biz-name" name="bizName" lang="zh" autocomplete="organization"
+                 maxlength="40" placeholder="苏州手工茶行" data-i18n-ph="phName">
+          <p class="help" data-i18n="helpName">Write it the way your customers in China already know it. We handle the English.</p>
+        </div>
+
+        <div class="field">
+          <label class="label" for="tagline" data-i18n="labelTagline">Tagline 标语</label>
+          <input class="input" type="text" id="tagline" name="tagline" lang="zh"
+                 maxlength="60" placeholder="三代人的手艺" data-i18n-ph="phTagline">
+          <p class="help"><span data-i18n="helpTagline">Optional.</span> <span class="counter" id="tagline-count">0 / 60</span></p>
+        </div>
+      </fieldset>
+
+      <!-- C. Industry -->
+      <fieldset class="field-group">
+        <legend class="legend"><span class="legend-key">C</span><span data-i18n="secIndustry">Industry</span></legend>
+        <div class="field">
+          <label class="label sr-only" for="industry" data-i18n="secIndustry">Industry</label>
+          <div class="select-wrap">
+            <select class="input select" id="industry" name="industry">
+              <option value="" data-i18n="indChoose">Select an industry</option>
+              <option value="food" data-i18n="indFood">Restaurant &amp; prepared food</option>
+              <option value="tea" data-i18n="indTea">Tea &amp; beverage</option>
+              <option value="textiles" data-i18n="indTextiles">Textiles &amp; apparel</option>
+              <option value="electronics" data-i18n="indElectronics">Consumer electronics</option>
+              <option value="home" data-i18n="indHome">Home &amp; kitchen goods</option>
+              <option value="beauty" data-i18n="indBeauty">Beauty &amp; personal care</option>
+              <option value="manufacturing" data-i18n="indManufacturing">Manufacturing &amp; OEM</option>
+              <option value="other" data-i18n="indOther">Something else</option>
+            </select>
+          </div>
+          <p class="help" data-i18n="helpIndustry">Sets the pacing and the reference ads we work from.</p>
+        </div>
+      </fieldset>
+
+      <!-- D. Platform -->
+      <fieldset class="field-group">
+        <legend class="legend"><span class="legend-key">D</span><span data-i18n="secPlatform">Target platform</span></legend>
+
+        <div class="ratios" role="radiogroup" aria-labelledby="platform-label">
+          <span id="platform-label" class="sr-only" data-i18n="secPlatform">Target platform</span>
+
+          <label class="ratio">
+            <input type="radio" name="platform" value="16:9" checked data-platform="YouTube &amp; web" data-platform-zh="YouTube 与网页">
+            <span class="ratio-box"><span class="ratio-shape" style="--w:32px;--h:18px"></span></span>
+            <span class="ratio-text"><strong>16:9</strong><span data-i18n="platYoutube">YouTube &amp; web</span></span>
+          </label>
+
+          <label class="ratio">
+            <input type="radio" name="platform" value="1:1" data-platform="Instagram feed" data-platform-zh="Instagram 信息流">
+            <span class="ratio-box"><span class="ratio-shape" style="--w:24px;--h:24px"></span></span>
+            <span class="ratio-text"><strong>1:1</strong><span data-i18n="platFeed">Instagram feed</span></span>
+          </label>
+
+          <label class="ratio">
+            <input type="radio" name="platform" value="4:5" data-platform="Instagram portrait" data-platform-zh="Instagram 竖版">
+            <span class="ratio-box"><span class="ratio-shape" style="--w:21px;--h:26px"></span></span>
+            <span class="ratio-text"><strong>4:5</strong><span data-i18n="platPortrait">Instagram portrait</span></span>
+          </label>
+
+          <label class="ratio">
+            <input type="radio" name="platform" value="9:16" data-platform="TikTok &amp; Reels" data-platform-zh="TikTok 与 Reels">
+            <span class="ratio-box"><span class="ratio-shape" style="--w:16px;--h:28px"></span></span>
+            <span class="ratio-text"><strong>9:16</strong><span data-i18n="platReels">TikTok &amp; Reels</span></span>
+          </label>
+        </div>
+      </fieldset>
+
+      <div class="actions">
+        <button type="submit" class="btn btn--primary" id="submit-btn" disabled data-i18n="submit">Generate advertisement</button>
+        <button type="reset" class="btn btn--ghost" id="reset-btn" data-i18n="reset">Reset</button>
+      </div>
+      <p class="help actions-help" id="submit-help" data-i18n="submitHelpEmpty">Add at least one image to continue.</p>
+
+    </form>
+  </section>
+
+  <!-- ============================ OUTPUT ============================ -->
+  <section class="panel panel--output" aria-labelledby="output-title">
+    <div class="panel-head">
+      <span class="panel-num" aria-hidden="true">02</span>
+      <div>
+        <h2 class="panel-title" id="output-title" data-i18n="outputTitle">Output</h2>
+        <p class="panel-note" data-i18n="outputNote">Your advertisement, built for the American market.</p>
+      </div>
+    </div>
+
+    <dl class="meta">
+      <div class="meta-cell">
+        <dt class="micro" data-i18n="metaBrand">Brand</dt>
+        <dd id="meta-brand" lang="zh">—</dd>
+      </div>
+      <div class="meta-cell">
+        <dt class="micro" data-i18n="metaIndustry">Industry</dt>
+        <dd id="meta-industry">—</dd>
+      </div>
+      <div class="meta-cell">
+        <dt class="micro" data-i18n="metaPlatform">Platform</dt>
+        <dd id="meta-platform">YouTube &amp; web</dd>
+      </div>
+      <div class="meta-cell">
+        <dt class="micro" data-i18n="metaSource">Source images</dt>
+        <dd id="meta-count">0</dd>
+      </div>
+    </dl>
+
+    <div class="stage">
+      <div class="frame" id="frame" data-ratio="16:9">
+
+        <!-- STATE: idle -->
+        <div class="state state--idle" id="state-idle">
+          <p class="state-title" data-i18n="idleTitle">No advertisement yet</p>
+          <p class="state-body" data-i18n="idleBody">Complete the form on the left. Your finished video appears here.</p>
+        </div>
+
+        <!-- STATE: processing -->
+        <div class="state state--processing" id="state-processing" hidden>
+          <p class="state-step micro" id="proc-step">—</p>
+          <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+        </div>
+
+        <!-- STATE: delivered, no video file present -->
+        <div class="state state--slot" id="state-slot" hidden>
+          <p class="state-title" data-i18n="slotTitle">Video slot</p>
+          <p class="state-body" data-i18n="slotBody">Drop your finished advertisement here, or place the file at the path below.</p>
+          <code class="path">assets/advertisement.mp4</code>
+          <div class="slot-actions">
+            <button type="button" class="btn btn--ghost btn--sm" id="pick-video" data-i18n="pickVideo">Load a video file</button>
+          </div>
+          <input type="file" id="video-input" class="file-input" accept="video/*">
+        </div>
+
+        <!-- STATE: delivered, video playing -->
+        <video id="ad-video" class="ad-video" controls playsinline preload="metadata" hidden></video>
+
+      </div>
+    </div>
+
+    <div class="stage-foot">
+      <p class="help" id="stage-foot-note" data-i18n="footIdle">Frame follows the aspect ratio selected in section D.</p>
+      <a class="btn btn--ghost btn--sm" id="download-btn" download hidden data-i18n="download">Download</a>
+    </div>
+
+    <p class="sr-only" role="status" aria-live="polite" id="live-region"></p>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p data-i18n="footerLeft">Frontend demonstration. No files leave this browser.</p>
+  <p>[ COMPANY NAME ] · <span data-i18n="footerRight">Wharton Global Youth Program</span></p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
