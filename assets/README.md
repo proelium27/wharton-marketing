@@ -1,5 +1,17 @@
 # assets
 
+## The example
+
+`example/1.jpg` through `example/6.jpg` are the photos the site loads on open, so
+every visitor sees the same example on any computer without uploading anything.
+
+To change it, drop new photos in and list them in the `EXAMPLE` block at the top of
+`app.js`. The business name and tagline live in that same block. They are placeholder
+wording written to suit the truck photos, not a real client's copy.
+
+The example needs the page served over HTTP. Opened straight off the disk as a
+`file://` URL the browser blocks the fetches and the form starts empty.
+
 ## The advertisement video
 
 Put your finished advertisement here, named exactly:

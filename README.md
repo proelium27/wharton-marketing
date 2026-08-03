@@ -19,11 +19,26 @@ python3 -m http.server 8000
 
 Then open <http://localhost:8000>.
 
+## The example
+
+The site opens with a worked example already filled in: six truck photos, a business
+name, a tagline, an industry, and a target platform. The photos ship in
+`assets/example/`, so the example looks identical on anyone's computer with nothing
+uploaded and no network calls beyond this site.
+
+Everything about it lives in the `EXAMPLE` block at the top of `app.js`. Pressing
+**Reset** returns to it rather than emptying the form, so the demo cannot be left
+blank for the next person.
+
+The business name and tagline there are placeholder wording chosen to suit the
+photos. Replace them with the real client's.
+
 ## Add your video
 
-Put your finished ad at `assets/advertisement.mp4`. It plays automatically after the
-form is submitted. Until then the output panel shows a labelled empty video slot,
-and the **Load a video file** button lets you preview any file from your computer.
+Put your finished ad at `assets/advertisement.mp4`. The example then shows it
+already playing on open. Until that file exists the output panel shows a labelled
+empty video slot, and the **Load a video file** button previews any file from your
+computer.
 
 Details in [`assets/README.md`](assets/README.md).
 
