@@ -26,7 +26,6 @@
       brandRole: 'Marketing Agency',
 
       inputTitle: 'Input',
-      inputNote: 'Your photos and your brand, exactly as they are today.',
 
       secImages: 'Product images',
       dropPrimary: 'Drag images here, or select files',
@@ -36,10 +35,8 @@
       secBrand: 'Your brand, in Chinese',
       labelName: 'Business name 公司名称',
       phName: '苏州手工茶行',
-      helpName: 'Write it the way your customers in China already know it. We handle the English.',
       labelTagline: 'Tagline 标语',
       phTagline: '三代人的手艺',
-      helpTagline: 'Optional.',
 
       secIndustry: 'Industry',
       indChoose: 'Select an industry',
@@ -51,7 +48,6 @@
       indBeauty: 'Beauty & personal care',
       indManufacturing: 'Manufacturing & OEM',
       indOther: 'Something else',
-      helpIndustry: 'Sets the pacing and the reference ads we work from.',
 
       secPlatform: 'Target platform',
       platYoutube: 'YouTube & web',
@@ -61,26 +57,18 @@
 
       submit: 'Generate advertisement',
       reset: 'Reset',
-      submitHelpEmpty: 'Add at least one image to continue.',
-      submitHelpReady: 'Ready. Nothing is uploaded; this runs entirely in your browser.',
 
       outputTitle: 'Output',
-      outputNote: 'Your advertisement, built for the American market.',
       metaBrand: 'Brand',
       metaIndustry: 'Industry',
       metaPlatform: 'Platform',
       metaSource: 'Source images',
 
       idleTitle: 'No advertisement yet',
-      idleBody: 'Complete the form on the left. Your finished video appears here.',
       slotTitle: 'Video slot',
-      slotBody: 'Drop your finished advertisement here, or place the file at the path below.',
       pickVideo: 'Load a video file',
       download: 'Download',
 
-      footIdle: 'Frame follows the aspect ratio selected in section D.',
-      footDelivered: 'Delivered. Playback is local to this browser.',
-      footerLeft: 'Frontend demonstration. No files leave this browser.',
       footerRight: 'Wharton Global Youth Program',
 
       notSet: '—',
@@ -101,7 +89,6 @@
       brandRole: '营销机构',
 
       inputTitle: '输入',
-      inputNote: '您现有的照片与品牌，无需任何改动。',
 
       secImages: '产品图片',
       dropPrimary: '把图片拖到这里，或选择文件',
@@ -111,10 +98,8 @@
       secBrand: '您的中文品牌',
       labelName: '公司名称 Business name',
       phName: '苏州手工茶行',
-      helpName: '按中国客户熟悉的写法填写即可，英文部分由我们处理。',
       labelTagline: '标语 Tagline',
       phTagline: '三代人的手艺',
-      helpTagline: '选填。',
 
       secIndustry: '行业',
       indChoose: '请选择行业',
@@ -126,7 +111,6 @@
       indBeauty: '美妆与个护',
       indManufacturing: '制造与代工',
       indOther: '其他',
-      helpIndustry: '决定广告节奏与我们参考的案例。',
 
       secPlatform: '投放平台',
       platYoutube: 'YouTube 与网页',
@@ -136,26 +120,18 @@
 
       submit: '生成广告',
       reset: '重置',
-      submitHelpEmpty: '请至少添加一张图片。',
-      submitHelpReady: '已就绪。文件不会上传，全部在您的浏览器中完成。',
 
       outputTitle: '输出',
-      outputNote: '为美国市场制作的广告。',
       metaBrand: '品牌',
       metaIndustry: '行业',
       metaPlatform: '平台',
       metaSource: '素材图片',
 
       idleTitle: '尚未生成广告',
-      idleBody: '请填写左侧表单，成片将显示在这里。',
       slotTitle: '视频位',
-      slotBody: '把成片拖到这里，或将文件放在下方路径。',
       pickVideo: '载入视频文件',
       download: '下载',
 
-      footIdle: '画框会跟随 D 区所选的画面比例。',
-      footDelivered: '已交付。播放仅在本浏览器进行。',
-      footerLeft: '前端演示。文件不会离开您的浏览器。',
       footerRight: '沃顿全球青年项目',
 
       notSet: '—',
@@ -193,7 +169,6 @@
   var industry = $('industry');
 
   var submitBtn = $('submit-btn');
-  var submitHelp = $('submit-help');
   var resetBtn = $('reset-btn');
 
   var metaBrand = $('meta-brand');
@@ -211,8 +186,8 @@
   var adVideo = $('ad-video');
   var pickVideo = $('pick-video');
   var videoInput = $('video-input');
+  var videoError = $('video-error');
   var downloadBtn = $('download-btn');
-  var stageFootNote = $('stage-foot-note');
   var liveRegion = $('live-region');
 
   /* ---------------------------------------------------------------------
@@ -264,12 +239,10 @@
     updateMeta();
     updateSubmitState();
     updateTaglineCount();
-    if (view === 'idle' || view === 'slot') {
-      stageFootNote.textContent = dict.footIdle;
-    } else if (view === 'playing') {
-      stageFootNote.textContent = dict.footDelivered;
-    }
-    fileError.hidden = true; // stale error text in the previous language
+
+    // Stale error text would still be in the previous language.
+    fileError.hidden = true;
+    videoError.hidden = true;
   }
 
   document.querySelectorAll('.lang-btn').forEach(function (btn) {
@@ -427,9 +400,7 @@
   }
 
   function updateSubmitState() {
-    var ready = images.length > 0;
-    submitBtn.disabled = !ready;
-    submitHelp.textContent = ready ? t().submitHelpReady : t().submitHelpEmpty;
+    submitBtn.disabled = images.length === 0;
   }
 
   bizName.addEventListener('input', updateMeta);
@@ -457,7 +428,7 @@
     adVideo.hidden = next !== 'playing';
 
     downloadBtn.hidden = next !== 'playing';
-    stageFootNote.textContent = (next === 'playing') ? t().footDelivered : t().footIdle;
+    if (next !== 'slot') videoError.hidden = true;
   }
 
   function runProcessing(done) {
@@ -539,10 +510,12 @@
 
   function acceptVideo(file) {
     if (!file || !/^video\//.test(file.type)) {
+      videoError.textContent = t().errVideoType;
+      videoError.hidden = false;
       announce(t().errVideoType);
-      stageFootNote.textContent = t().errVideoType;
       return;
     }
+    videoError.hidden = true;
     if (videoObjectUrl) URL.revokeObjectURL(videoObjectUrl);
     videoObjectUrl = URL.createObjectURL(file);
     playVideo(videoObjectUrl, file.name);

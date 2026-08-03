@@ -36,7 +36,6 @@
       <span class="panel-num" aria-hidden="true">01</span>
       <div>
         <h2 class="panel-title" id="input-title" data-i18n="inputTitle">Input</h2>
-        <p class="panel-note" data-i18n="inputNote">Your photos and your brand, exactly as they are today.</p>
       </div>
     </div>
 
@@ -71,14 +70,13 @@
           <label class="label" for="biz-name" data-i18n="labelName">Business name 公司名称</label>
           <input class="input" type="text" id="biz-name" name="bizName" lang="zh" autocomplete="organization"
                  maxlength="40" placeholder="苏州手工茶行" data-i18n-ph="phName">
-          <p class="help" data-i18n="helpName">Write it the way your customers in China already know it. We handle the English.</p>
         </div>
 
         <div class="field">
           <label class="label" for="tagline" data-i18n="labelTagline">Tagline 标语</label>
           <input class="input" type="text" id="tagline" name="tagline" lang="zh"
                  maxlength="60" placeholder="三代人的手艺" data-i18n-ph="phTagline">
-          <p class="help"><span data-i18n="helpTagline">Optional.</span> <span class="counter" id="tagline-count">0 / 60</span></p>
+          <p class="help"><span class="counter" id="tagline-count">0 / 60</span></p>
         </div>
       </fieldset>
 
@@ -100,7 +98,6 @@
               <option value="other" data-i18n="indOther">Something else</option>
             </select>
           </div>
-          <p class="help" data-i18n="helpIndustry">Sets the pacing and the reference ads we work from.</p>
         </div>
       </fieldset>
 
@@ -141,7 +138,6 @@
         <button type="submit" class="btn btn--primary" id="submit-btn" disabled data-i18n="submit">Generate advertisement</button>
         <button type="reset" class="btn btn--ghost" id="reset-btn" data-i18n="reset">Reset</button>
       </div>
-      <p class="help actions-help" id="submit-help" data-i18n="submitHelpEmpty">Add at least one image to continue.</p>
 
     </form>
   </section>
@@ -152,7 +148,6 @@
       <span class="panel-num" aria-hidden="true">02</span>
       <div>
         <h2 class="panel-title" id="output-title" data-i18n="outputTitle">Output</h2>
-        <p class="panel-note" data-i18n="outputNote">Your advertisement, built for the American market.</p>
       </div>
     </div>
 
@@ -181,7 +176,6 @@
         <!-- STATE: idle -->
         <div class="state state--idle" id="state-idle">
           <p class="state-title" data-i18n="idleTitle">No advertisement yet</p>
-          <p class="state-body" data-i18n="idleBody">Complete the form on the left. Your finished video appears here.</p>
         </div>
 
         <!-- STATE: processing -->
@@ -195,11 +189,10 @@
         <!-- STATE: delivered, no video file present -->
         <div class="state state--slot" id="state-slot" hidden>
           <p class="state-title" data-i18n="slotTitle">Video slot</p>
-          <p class="state-body" data-i18n="slotBody">Drop your finished advertisement here, or place the file at the path below.</p>
-          <code class="path">assets/advertisement.mp4</code>
           <div class="slot-actions">
             <button type="button" class="btn btn--ghost btn--sm" id="pick-video" data-i18n="pickVideo">Load a video file</button>
           </div>
+          <p class="error" id="video-error" role="alert" hidden></p>
           <input type="file" id="video-input" class="file-input" accept="video/*">
         </div>
 
@@ -210,7 +203,6 @@
     </div>
 
     <div class="stage-foot">
-      <p class="help" id="stage-foot-note" data-i18n="footIdle">Frame follows the aspect ratio selected in section D.</p>
       <a class="btn btn--ghost btn--sm" id="download-btn" download hidden data-i18n="download">Download</a>
     </div>
 
@@ -220,7 +212,6 @@
 </main>
 
 <footer class="site-footer">
-  <p data-i18n="footerLeft">Frontend demonstration. No files leave this browser.</p>
   <p>East to West · <span data-i18n="footerRight">Wharton Global Youth Program</span></p>
 </footer>
 

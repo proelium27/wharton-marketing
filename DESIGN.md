@@ -75,9 +75,21 @@ navy text on paper with a navy border; both flip to `--navy-deep` on hover.
 160ms `cubic-bezier(0.22, 1, 0.36, 1)` on color and border transitions only. The
 processing progress bar animates width. Nothing else moves. No page-load choreography.
 
+## Copy
+
+The interface carries no instructional, explanatory, or reassuring prose. Labels
+name things; they do not teach. There are no help lines under fields, no subtitles
+under panel titles, no hints in empty states, and no notes about how the demo works.
+
+Two exceptions, both factual rather than explanatory: the accepted file formats and
+limits under the upload box, and error messages, which appear only after something
+goes wrong.
+
 ## Bans specific to this project
 
 - Rounded corners of any radius.
 - Gradients, shadows, glass.
-- Inventing a company name or logo. Placeholders stay bracketed.
+- Inventing a logo. The placeholder square stays until artwork exists.
 - Marketing copy inside the tool.
+- Help text, hints, tooltips, or any sentence that explains the interface to the
+  user. If a control needs a sentence to be understood, relabel the control.
