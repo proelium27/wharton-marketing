@@ -16,6 +16,29 @@
   var MAX_BYTES = 10 * 1024 * 1024; // 10 MB
   var ACCEPTED = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
 
+  // The example everyone sees on open. These files ship with the site, so it looks
+  // the same on any computer, with no upload and no network beyond this origin.
+  //
+  // To change it: drop new photos into assets/example/ and list them below. The
+  // bizName and tagline are placeholder text written to suit the truck photos;
+  // replace them with the real client's wording. Set enabled to false for an
+  // empty form.
+  var EXAMPLE = {
+    enabled: true,
+    images: [
+      'assets/example/1.jpg',
+      'assets/example/2.jpg',
+      'assets/example/3.jpg',
+      'assets/example/4.jpg',
+      'assets/example/5.jpg',
+      'assets/example/6.jpg'
+    ],
+    bizName: '东方商用车',
+    tagline: '载得动，跑得远',
+    industry: 'manufacturing', // must match a value in the industry <select>
+    platform: '9:16'           // 16:9 | 1:1 | 4:5 | 9:16
+  };
+
   /* ---------------------------------------------------------------------
      Copy, in both languages
      --------------------------------------------------------------------- */
@@ -407,11 +430,15 @@
   industry.addEventListener('change', updateMeta);
   tagline.addEventListener('input', updateTaglineCount);
 
+  function syncRatioLabels() {
+    form.querySelectorAll('.ratio').forEach(function (label) {
+      label.classList.toggle('is-selected', label.querySelector('input').checked);
+    });
+  }
+
   form.querySelectorAll('input[name="platform"]').forEach(function (radio) {
     radio.addEventListener('change', function () {
-      form.querySelectorAll('.ratio').forEach(function (label) {
-        label.classList.toggle('is-selected', label.contains(radio) && radio.checked);
-      });
+      syncRatioLabels();
       updateMeta();
     });
   });
@@ -566,14 +593,15 @@
 
     // The form resets itself after this handler; read the defaults on the next tick.
     setTimeout(function () {
-      form.querySelectorAll('.ratio').forEach(function (label) {
-        var radio = label.querySelector('input');
-        label.classList.toggle('is-selected', radio.checked);
-      });
+      syncRatioLabels();
       setView('idle');
       updateMeta();
       updateSubmitState();
       updateTaglineCount();
+
+      // Reset means "back to how the page started", and the page starts on the
+      // example. Without this, a visitor could leave the demo blank for the next one.
+      restoreExample();
     }, 0);
   });
 
@@ -583,14 +611,77 @@
   });
 
   /* ---------------------------------------------------------------------
+     The hardcoded example
+
+     Fetches the shipped photos back into the same File objects a real upload
+     would produce, so nothing downstream needs to know the difference.
+     Requires the page to be served over HTTP; opened straight off the disk as
+     a file:// URL the fetches fail and the form simply starts empty.
+     --------------------------------------------------------------------- */
+
+  function loadExampleImages() {
+    return Promise.all(EXAMPLE.images.map(function (path) {
+      return fetch(path)
+        .then(function (res) { return res.ok ? res.blob() : null; })
+        .then(function (blob) {
+          if (!blob || !/^image\//.test(blob.type)) return null;
+          var name = path.split('/').pop();
+          return {
+            file: new File([blob], name, { type: blob.type }),
+            url: URL.createObjectURL(blob),
+            name: name
+          };
+        })
+        .catch(function () { return null; });
+    })).then(function (loaded) {
+      return loaded.filter(Boolean);
+    });
+  }
+
+  function restoreExample() {
+    if (!EXAMPLE.enabled) return Promise.resolve();
+
+    bizName.value = EXAMPLE.bizName;
+    tagline.value = EXAMPLE.tagline;
+    industry.value = EXAMPLE.industry;
+
+    var radio = form.querySelector('input[name="platform"][value="' + EXAMPLE.platform + '"]');
+    if (radio) {
+      radio.checked = true;
+      syncRatioLabels();
+    }
+
+    updateMeta();
+    updateTaglineCount();
+
+    return loadExampleImages().then(function (loaded) {
+      images.forEach(function (img) { URL.revokeObjectURL(img.url); });
+      images = loaded;
+
+      renderThumbs();
+      updateMeta();
+      updateSubmitState();
+
+      if (!images.length) {
+        setView('idle');   // fetch blocked or files missing
+        return;
+      }
+
+      // The example is presented already finished, so anyone opening the link
+      // sees the advertisement without touching anything.
+      return probeVideo().then(function (found) {
+        if (found) playVideo(VIDEO_PATH, 'advertisement.mp4');
+        else setView('slot');
+      });
+    });
+  }
+
+  /* ---------------------------------------------------------------------
      Boot
      --------------------------------------------------------------------- */
 
-  form.querySelectorAll('.ratio').forEach(function (label) {
-    var radio = label.querySelector('input');
-    label.classList.toggle('is-selected', radio.checked);
-  });
-
+  syncRatioLabels();
   applyLanguage();
   setView('idle');
+  restoreExample();
 })();
