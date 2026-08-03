@@ -1,4 +1,4 @@
-# [ COMPANY NAME ] — Client Platform
+# East to West — Marketing Agency
 
 Frontend demo for a marketing agency that rebrands small Chinese businesses for the
 American market. Built for a Wharton Global Youth Program business-plan pitch.
@@ -27,17 +27,18 @@ and the **Load a video file** button lets you preview any file from your compute
 
 Details in [`assets/README.md`](assets/README.md).
 
-## Replace the placeholders
+## Still a placeholder
 
-Both the name and the logo are deliberately unfinished and bracketed so nobody
-mistakes them for a decision.
+The name is set. The logo is not.
 
-| Placeholder | Where |
-|---|---|
-| `[ COMPANY NAME ]` | `index.html` — page `<title>`, header `.brand-name`, footer |
-| `LOGO` square | `index.html` — the `.brand-mark` block, marked with a comment |
+The header shows a bordered square reading `LOGO`, marked with a comment in
+`index.html`. When you have artwork, drop `logo.svg` into `assets/` and replace the
+`.brand-mark` block with an `<img>`. Search for `PLACEHOLDER` to find it.
 
-Search for `[ COMPANY NAME ]` and `PLACEHOLDER` to find every spot.
+The name appears in three places if you ever change it: the page `<title>`, the
+header `.brand-name`, and the footer. The words "Marketing Agency" underneath the
+name are translated, so they live in `app.js` under the `brandRole` key rather than
+in the HTML.
 
 ## What is here
 
