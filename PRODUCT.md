@@ -35,8 +35,13 @@ selling already happened.
 
 ## Brand
 
-Placeholder identity. The company name and logo are not chosen yet and appear as
-literal bracketed placeholders. Do not invent a name, wordmark, or icon.
+**East to West**, a marketing agency. The name carries the whole proposition: the
+client's product moves from an eastern market to a western one, and the agency is
+the passage. It is set in English in both language modes, because the English brand
+is the thing being sold.
+
+The logo is not chosen yet and appears as a bordered placeholder square. Do not
+invent a wordmark or icon.
 
 White surface, one dark blue accent, hairline rules, square corners. No gradients,
 no shadows, no rounded buttons, no decorative imagery.

@@ -1,5 +1,5 @@
 /* =========================================================================
-   [ COMPANY NAME ] — Client Platform
+   East to West — Marketing Agency
    Frontend only. Nothing is uploaded anywhere; images stay in this browser.
    ========================================================================= */
 (function () {
@@ -23,7 +23,7 @@
   var COPY = {
     en: {
       skip: 'Skip to the form',
-      brandRole: 'Client Platform',
+      brandRole: 'Marketing Agency',
 
       inputTitle: 'Input',
       inputNote: 'Your photos and your brand, exactly as they are today.',
@@ -98,7 +98,7 @@
 
     zh: {
       skip: '跳至表单',
-      brandRole: '客户平台',
+      brandRole: '营销机构',
 
       inputTitle: '输入',
       inputNote: '您现有的照片与品牌，无需任何改动。',
