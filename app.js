@@ -48,7 +48,7 @@
       skip: 'Skip to the form',
       brandRole: 'Marketing Agency',
 
-      inputTitle: 'Input',
+      inputTitle: 'What you provide',
 
       secImages: 'Product images',
       dropPrimary: 'Drag images here, or select files',
@@ -72,16 +72,16 @@
       indManufacturing: 'Manufacturing & OEM',
       indOther: 'Something else',
 
-      secPlatform: 'Target platform',
+      secPlatform: 'Video size',
       platYoutube: 'YouTube & web',
       platFeed: 'Instagram feed',
       platPortrait: 'Instagram portrait',
       platReels: 'TikTok & Reels',
 
-      submit: 'Generate advertisement',
+      submit: 'Submit brief',
       reset: 'Reset',
 
-      outputTitle: 'Output',
+      outputTitle: 'What you receive',
       metaBrand: 'Brand',
       metaIndustry: 'Industry',
       metaPlatform: 'Platform',
@@ -101,8 +101,10 @@
       errSize: function (name) { return '“' + name + '” was skipped. Each image must be under 10 MB.'; },
       errMax: 'Only the first ' + MAX_IMAGES + ' images were kept.',
       errVideoType: 'That file is not a video.',
-      steps: ['Reading images', 'Matching reference ads', 'Composing scenes', 'Rendering'],
-      annProcessing: 'Generating your advertisement.',
+      confirm: function (brand) {
+        return 'Brief received for ' + brand + '. Our team returns your advertisement within five business days.';
+      },
+      confirmNoName: 'Brief received. Our team returns your advertisement within five business days.',
       annSlot: 'Ready. Waiting for the video file.',
       annPlaying: 'Advertisement loaded.'
     },
@@ -111,7 +113,7 @@
       skip: '跳至表单',
       brandRole: '营销机构',
 
-      inputTitle: '输入',
+      inputTitle: '您提供的',
 
       secImages: '产品图片',
       dropPrimary: '把图片拖到这里，或选择文件',
@@ -135,22 +137,22 @@
       indManufacturing: '制造与代工',
       indOther: '其他',
 
-      secPlatform: '投放平台',
+      secPlatform: '视频尺寸',
       platYoutube: 'YouTube 与网页',
       platFeed: 'Instagram 信息流',
       platPortrait: 'Instagram 竖版',
       platReels: 'TikTok 与 Reels',
 
-      submit: '生成广告',
+      submit: '提交需求',
       reset: '重置',
 
-      outputTitle: '输出',
+      outputTitle: '您收到的',
       metaBrand: '品牌',
       metaIndustry: '行业',
       metaPlatform: '平台',
       metaSource: '素材图片',
 
-      idleTitle: '尚未生成广告',
+      idleTitle: '暂无广告',
       slotTitle: '视频位',
       pickVideo: '载入视频文件',
       download: '下载',
@@ -164,8 +166,10 @@
       errSize: function (name) { return '已跳过“' + name + '”。每张图片须小于 10 MB。'; },
       errMax: '仅保留了前 ' + MAX_IMAGES + ' 张图片。',
       errVideoType: '该文件不是视频。',
-      steps: ['读取图片', '匹配参考广告', '编排画面', '渲染中'],
-      annProcessing: '正在生成广告。',
+      confirm: function (brand) {
+        return '已收到「' + brand + '」的需求。我们将在五个工作日内交付广告。';
+      },
+      confirmNoName: '需求已收到。我们将在五个工作日内交付广告。',
       annSlot: '已就绪，等待视频文件。',
       annPlaying: '广告已载入。'
     }
@@ -199,13 +203,11 @@
   var metaPlatform = $('meta-platform');
   var metaCount = $('meta-count');
 
+  var confirmMsg = $('confirm');
+
   var frame = $('frame');
   var stateIdle = $('state-idle');
-  var stateProcessing = $('state-processing');
   var stateSlot = $('state-slot');
-  var procStep = $('proc-step');
-  var progress = $('progress');
-  var progressFill = $('progress-fill');
   var adVideo = $('ad-video');
   var pickVideo = $('pick-video');
   var videoInput = $('video-input');
@@ -220,15 +222,9 @@
   var lang = 'en';
   var images = [];          // { file, url, name }
   var videoObjectUrl = null;
-  var timers = [];
-  var view = 'idle';        // idle | processing | slot | playing
+  var view = 'idle';        // idle | slot | playing
 
   var t = function () { return COPY[lang]; };
-
-  function clearTimers() {
-    timers.forEach(clearTimeout);
-    timers = [];
-  }
 
   function announce(msg) { liveRegion.textContent = msg; }
 
@@ -266,6 +262,12 @@
     // Stale error text would still be in the previous language.
     fileError.hidden = true;
     videoError.hidden = true;
+
+    // The confirmation stays put, but has to be rewritten in the new language.
+    if (!confirmMsg.hidden) {
+      var brand = bizName.value.trim();
+      confirmMsg.textContent = brand ? dict.confirm(brand) : dict.confirmNoName;
+    }
   }
 
   document.querySelectorAll('.lang-btn').forEach(function (btn) {
@@ -450,31 +452,11 @@
   function setView(next) {
     view = next;
     stateIdle.hidden = next !== 'idle';
-    stateProcessing.hidden = next !== 'processing';
     stateSlot.hidden = next !== 'slot';
     adVideo.hidden = next !== 'playing';
 
     downloadBtn.hidden = next !== 'playing';
     if (next !== 'slot') videoError.hidden = true;
-  }
-
-  function runProcessing(done) {
-    setView('processing');
-    announce(t().annProcessing);
-
-    var steps = t().steps;
-    var each = 600;
-
-    steps.forEach(function (label, i) {
-      timers.push(setTimeout(function () {
-        procStep.textContent = label;
-        var pct = Math.round(((i + 1) / steps.length) * 100);
-        progressFill.style.width = pct + '%';
-        progress.setAttribute('aria-valuenow', String(pct));
-      }, i * each));
-    });
-
-    timers.push(setTimeout(done, steps.length * each + 200));
   }
 
   // Look for a video at VIDEO_PATH. Resolves false if it is not there,
@@ -507,28 +489,21 @@
     announce(t().annPlaying);
   }
 
+  // Submitting sends a brief to the team. It does not make anything: the work is
+  // done by people, so all this does is acknowledge the brief. The deliverable
+  // beside it stays on screen as an example of what comes back.
+  function showConfirmation() {
+    var brand = bizName.value.trim();
+    confirmMsg.textContent = brand ? t().confirm(brand) : t().confirmNoName;
+    confirmMsg.hidden = false;
+    submitBtn.disabled = true;
+    announce(confirmMsg.textContent);
+  }
+
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     if (!images.length) return;
-
-    clearTimers();
-    progressFill.style.width = '0%';
-    progress.setAttribute('aria-valuenow', '0');
-    procStep.textContent = t().steps[0];
-
-    submitBtn.disabled = true;
-
-    runProcessing(function () {
-      probeVideo().then(function (found) {
-        submitBtn.disabled = false;
-        if (found) {
-          playVideo(VIDEO_PATH, 'advertisement.mp4');
-        } else {
-          setView('slot');
-          announce(t().annSlot);
-        }
-      });
-    });
+    showConfirmation();
   });
 
   /* ---------------------------------------------------------------------
@@ -576,7 +551,6 @@
      --------------------------------------------------------------------- */
 
   resetBtn.addEventListener('click', function () {
-    clearTimers();
     removeAllImages();
 
     if (videoObjectUrl) {
@@ -587,8 +561,7 @@
     adVideo.removeAttribute('src');
     adVideo.load();
 
-    progressFill.style.width = '0%';
-    progress.setAttribute('aria-valuenow', '0');
+    confirmMsg.hidden = true;
     submitBtn.disabled = true;
 
     // The form resets itself after this handler; read the defaults on the next tick.
