@@ -29,6 +29,7 @@
 
       secImages: 'Product images',
       dropPrimary: 'Drag images here, or select files',
+      dropMeta: 'JPG, PNG, WEBP or GIF · up to 10 MB each · 12 images maximum',
       removeAll: 'Remove all',
 
       secBrand: 'Your brand, in Chinese',
@@ -91,6 +92,7 @@
 
       secImages: '产品图片',
       dropPrimary: '把图片拖到这里，或选择文件',
+      dropMeta: 'JPG、PNG、WEBP 或 GIF · 每张不超过 10 MB · 最多 12 张',
       removeAll: '全部移除',
 
       secBrand: '您的中文品牌',

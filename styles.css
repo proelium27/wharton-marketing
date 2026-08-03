@@ -303,6 +303,7 @@ ul { list-style: none; }
   cursor: pointer;
 }
 .dropzone-primary { font-size: var(--t-base); color: var(--ink); }
+.dropzone-meta { font-size: var(--t-sm); color: var(--ink-2); }
 
 .thumbs-head {
   display: flex;

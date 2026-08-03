@@ -81,8 +81,9 @@ The interface carries no instructional, explanatory, or reassuring prose. Labels
 name things; they do not teach. There are no help lines under fields, no subtitles
 under panel titles, no hints in empty states, and no notes about how the demo works.
 
-The only sentences on the page are error messages, and they appear only after
-something goes wrong.
+Two exceptions, both factual rather than explanatory: the accepted file formats and
+limits under the upload box, and error messages, which appear only after something
+goes wrong.
 
 ## Bans specific to this project
 
