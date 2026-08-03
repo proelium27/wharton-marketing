@@ -35,7 +35,7 @@
     <div class="panel-head">
       <span class="panel-num" aria-hidden="true">01</span>
       <div>
-        <h2 class="panel-title" id="input-title" data-i18n="inputTitle">Input</h2>
+        <h2 class="panel-title" id="input-title" data-i18n="inputTitle">What you provide</h2>
       </div>
     </div>
 
@@ -103,10 +103,10 @@
 
       <!-- D. Platform -->
       <fieldset class="field-group">
-        <legend class="legend"><span class="legend-key">D</span><span data-i18n="secPlatform">Target platform</span></legend>
+        <legend class="legend"><span class="legend-key">D</span><span data-i18n="secPlatform">Video size</span></legend>
 
         <div class="ratios" role="radiogroup" aria-labelledby="platform-label">
-          <span id="platform-label" class="sr-only" data-i18n="secPlatform">Target platform</span>
+          <span id="platform-label" class="sr-only" data-i18n="secPlatform">Video size</span>
 
           <label class="ratio">
             <input type="radio" name="platform" value="16:9" checked data-platform="YouTube &amp; web" data-platform-zh="YouTube 与网页">
@@ -135,9 +135,11 @@
       </fieldset>
 
       <div class="actions">
-        <button type="submit" class="btn btn--primary" id="submit-btn" disabled data-i18n="submit">Generate advertisement</button>
+        <button type="submit" class="btn btn--primary" id="submit-btn" disabled data-i18n="submit">Submit brief</button>
         <button type="reset" class="btn btn--ghost" id="reset-btn" data-i18n="reset">Reset</button>
       </div>
+
+      <p class="confirm" id="confirm" role="status" hidden></p>
 
     </form>
   </section>
@@ -147,7 +149,7 @@
     <div class="panel-head">
       <span class="panel-num" aria-hidden="true">02</span>
       <div>
-        <h2 class="panel-title" id="output-title" data-i18n="outputTitle">Output</h2>
+        <h2 class="panel-title" id="output-title" data-i18n="outputTitle">What you receive</h2>
       </div>
     </div>
 
@@ -178,15 +180,7 @@
           <p class="state-title" data-i18n="idleTitle">No advertisement yet</p>
         </div>
 
-        <!-- STATE: processing -->
-        <div class="state state--processing" id="state-processing" hidden>
-          <p class="state-step micro" id="proc-step">—</p>
-          <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress">
-            <div class="progress-fill" id="progress-fill"></div>
-          </div>
-        </div>
-
-        <!-- STATE: delivered, no video file present -->
+        <!-- STATE: no video file present -->
         <div class="state state--slot" id="state-slot" hidden>
           <p class="state-title" data-i18n="slotTitle">Video slot</p>
           <div class="slot-actions">

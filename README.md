@@ -1,10 +1,16 @@
 # East to West — Marketing Agency
 
-Frontend demo for a marketing agency that rebrands small Chinese businesses for the
-American market. Built for a Wharton Global Youth Program business-plan pitch.
+A one-screen showcase of how the agency works, built for a Wharton Global Youth
+Program business-plan pitch.
 
-A client uploads product photos, enters their Chinese business name and tagline,
-picks an industry and a target platform, and receives a finished advertising video.
+East to West rebrands small Chinese businesses for the American market. The page
+shows the exchange: on the left, what a client provides (product photos, their
+Chinese business name and tagline, their industry, the video size they need); on the
+right, the advertisement the team hands back.
+
+**This page does not make advertisements.** People do. Submitting a brief
+acknowledges it, nothing more. There is deliberately no progress bar and no
+rendering sequence, because the agency is not an ad generator.
 
 No backend, no build step, no dependencies. Three files.
 

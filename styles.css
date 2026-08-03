@@ -514,19 +514,15 @@ ul { list-style: none; }
 
 .slot-actions { margin-top: var(--s3); }
 
-.state-step { color: var(--navy); }
-
-.progress {
-  width: min(220px, 70%);
-  height: 2px;
-  background: var(--rule);
-  margin-top: var(--s2);
-}
-.progress-fill {
-  height: 100%;
-  width: 0;
-  background: var(--navy);
-  transition: width 220ms linear;
+/* Acknowledges a submitted brief. Never implies anything was generated. */
+.confirm {
+  margin-top: var(--s4);
+  padding: var(--s3) var(--s4);
+  border: 1px solid var(--navy);
+  background: var(--navy-tint);
+  color: var(--navy);
+  font-size: var(--t-sm);
+  max-width: 62ch;
 }
 
 .ad-video {
