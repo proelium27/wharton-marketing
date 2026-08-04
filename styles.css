@@ -294,12 +294,12 @@ ul { list-style: none; }
 }
 .meta-cell { padding: var(--s3) var(--s4); border-right: 1px solid var(--rule); min-width: 0; }
 .meta-cell:last-child { border-right: 0; }
+/* Values wrap rather than truncate. These are four of the few facts on the page;
+   clipping "Manufacturing & OEM" to "Manufacturing &…" loses real content. */
 .meta-cell dd {
   font-size: var(--t-sm);
   margin-top: var(--s1);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow-wrap: break-word;
 }
 
 /* ---------- Stage & frame ---------- */
@@ -401,6 +401,14 @@ ul { list-style: none; }
   .stage { padding: var(--s3); }
   .site-footer { padding: var(--s4); }
   .brand-name { font-size: var(--t-md); }
+}
+
+/* Touch devices get full-size tap targets. Kept off pointer:fine so the desktop
+   header stays compact, where a mouse makes the smaller hit area a non-issue. */
+@media (pointer: coarse) {
+  .lang-btn { min-height: 44px; padding-inline: var(--s5); }
+  .btn { min-height: 44px; }
+  .btn--sm { min-height: 44px; padding: var(--s3) var(--s4); }
 }
 
 @media (prefers-reduced-motion: reduce) {
