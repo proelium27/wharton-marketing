@@ -1,5 +1,5 @@
 /* =========================================================================
-   East to West — Marketing Agency
+   East 2 West — Marketing Agency
 
    The page is a static case study. It has no form and produces nothing: the
    advertisement is made by people. All this script does is switch language and

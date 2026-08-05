@@ -1,7 +1,8 @@
 /* =========================================================================
-   East to West — Marketing Agency
+   East 2 West — Marketing Agency
    White surface, one dark blue accent, hairlines, square corners.
-   No gradients. No shadows. No rounded corners. See DESIGN.md.
+   No shadows. No rounded corners. No gradients drawn in CSS; the logo
+   artwork is the single gradient in the project. See DESIGN.md.
    ========================================================================= */
 
 :root {
@@ -104,17 +105,11 @@ ul { list-style: none; }
 
 .brand { display: flex; align-items: center; gap: var(--s4); }
 
-/* Placeholder logo: a bordered square, obviously unfinished */
+/* The logo. The only gradient in the project; see DESIGN.md. */
 .brand-mark {
-  width: 44px; height: 44px;
+  height: 44px;
+  width: auto;
   flex: none;
-  border: 1px solid var(--navy);
-  color: var(--navy);
-  display: grid;
-  place-items: center;
-  font-size: 0.5625rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
 }
 
 .brand-name {
@@ -401,6 +396,7 @@ ul { list-style: none; }
   .stage { padding: var(--s3); }
   .site-footer { padding: var(--s4); }
   .brand-name { font-size: var(--t-md); }
+  .brand-mark { height: 36px; }
 }
 
 /* Touch devices get full-size tap targets. Kept off pointer:fine so the desktop
