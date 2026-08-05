@@ -25,6 +25,14 @@ the page, neutrals tinted toward the accent hue so nothing reads as dead grey.
 The accent is reserved for primary action, current selection, focus, and state
 indication. It is never decoration.
 
+### The logo blues
+
+The logo runs its own gradient, roughly `#0d2898` through `#4fa3e0`. These are
+brighter and more saturated than `--navy`, and they are deliberately not reconciled
+with it: the artwork is fixed, and the interface palette stays as it is. They exist
+only inside the logo image and are not tokens. Nothing in the interface may sample
+them, and `--navy` remains the only blue the UI draws with.
+
 ## Typography
 
 One family: the native system stack. Fixed rem scale, ratio ~1.2. No fluid clamps.
@@ -48,7 +56,12 @@ buttons, thumbnails, and the video frame.
 
 No `box-shadow` anywhere. Depth comes from 1px hairlines and the panel tint.
 
-No gradients. No `backdrop-filter`.
+No gradients drawn in CSS. No `backdrop-filter`.
+
+The logo is the single exception, and it is a deliberate one: the supplied artwork
+is a blue gradient, and it ships as drawn rather than being flattened to `--navy`.
+It is a placed image, not a style — no rule elsewhere may reach for `linear-gradient`
+on the strength of it.
 
 ## Spacing
 
@@ -96,8 +109,8 @@ goes wrong.
 ## Bans specific to this project
 
 - Rounded corners of any radius.
-- Gradients, shadows, glass.
-- Inventing a logo. The placeholder square stays until artwork exists.
+- Shadows, glass, and any gradient in CSS. The logo image is the lone exception.
+- Redrawing, recolouring, or cropping the logo further. It is supplied artwork.
 - Marketing copy inside the tool.
 - Help text, hints, tooltips, or any sentence that explains the interface to the
   user. If a control needs a sentence to be understood, relabel the control.

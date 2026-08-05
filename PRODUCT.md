@@ -4,7 +4,7 @@
 
 A showcase of how the agency works, not a tool that does the work.
 
-East to West rebrands small Chinese businesses for the American market. The service
+East 2 West rebrands small Chinese businesses for the American market. The service
 is performed by people. This page exists to make that service legible in one screen:
 here is what a client hands over (product photos, their Chinese brand name and
 tagline, their industry, the video size they need), and here is the advertisement
@@ -49,16 +49,19 @@ selling already happened.
 
 ## Brand
 
-**East to West**, a marketing agency. The name carries the whole proposition: the
+**East 2 West**, a marketing agency. The name carries the whole proposition: the
 client's product moves from an eastern market to a western one, and the agency is
 the passage. It is set in English in both language modes, because the English brand
 is the thing being sold.
 
-The logo is not chosen yet and appears as a bordered placeholder square. Do not
-invent a wordmark or icon.
+The logo is a stylised bird in a blue gradient, at `assets/logo.png`. It is supplied
+artwork, not a design decision this repository gets to make: do not redraw it,
+recolour it, or substitute a wordmark for it. The header shows the bird alone,
+because the name and role are already set as text beside it.
 
-White surface, one dark blue accent, hairline rules, square corners. No gradients,
-no shadows, no rounded buttons, no decorative imagery.
+White surface, one dark blue accent, hairline rules, square corners. No shadows, no
+rounded buttons, no decorative imagery. The logo is the one gradient; nothing else
+in the interface may use one.
 
 ## Anti-References
 

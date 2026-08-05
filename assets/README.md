@@ -34,6 +34,15 @@ repository the button never appears, and the marked block in `app.js` can be del
 
 ## The logo
 
-There is no logo file yet. The header shows a bordered square reading `LOGO`.
-When you have one, drop `logo.svg` here and replace the `.brand-mark` block in
-`index.html` with an `<img>` tag. The placeholder is marked with a comment.
+`logo.png` is the header mark and the favicon: the bird from the supplied artwork,
+196×176, on a transparent background. The wordmark that sits under the bird in the
+original file is deliberately not here — the header already sets "East 2 West" and
+"Marketing Agency" as text, so including it would print the name twice.
+
+It is sized in CSS by height (44px in the header, 36px on narrow screens) with
+`width: auto`, so it keeps its proportions. The file is roughly four times that tall
+so it stays sharp on high-density displays.
+
+To replace it, keep the transparent background: the mark sits on `--paper` in the
+header but on `--panel` elsewhere, and a baked-in white background would show as a
+pale block against the tint.

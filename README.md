@@ -1,9 +1,9 @@
-# East to West — Marketing Agency
+# East 2 West — Marketing Agency
 
 A one-screen case study of how the agency works, built for a Wharton Global Youth
 Program business-plan pitch.
 
-East to West rebrands small Chinese businesses for the American market. The page
+East 2 West rebrands small Chinese businesses for the American market. The page
 shows one complete instance of the exchange: on the left, what a client provided
 (product photos, their Chinese business name and tagline, their industry, the video
 size they needed); on the right, the advertisement the team handed back.
@@ -54,9 +54,6 @@ translated: it stays in Chinese in both modes, because it is the brand as it exi
 today rather than interface text.
 
 ## Still a placeholder
-
-The logo. The header shows a bordered square reading `LOGO`, marked with a comment in
-`index.html`. Drop `logo.svg` into `assets/` and replace the `.brand-mark` block.
 
 The business name and tagline in the case study are placeholder wording chosen to
 suit the truck photos, not a real client's copy.
