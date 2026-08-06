@@ -25,8 +25,11 @@ python3 -m http.server 8000
 ## The advertisement
 
 The finished ad is committed at `assets/advertisement.mp4` and fills the frame in
-panel 02 on load, with a download link beneath it. It is silent, 19.5 seconds, and
-720×1280, which is the 9:16 the frame is set to.
+panel 02 on load, with a download link beneath it. It is 19.5 seconds, 720×1280,
+which is the 9:16 the frame is set to, and it has a voiceover and music.
+
+It does not autoplay, and it never should: the player waits to be pressed, so a room
+that has not asked for sound does not get any.
 
 To replace it, overwrite that file. It must be H.264 in MP4, not HEVC: HEVC is what
 phones record and what Messages and AirDrop hand you, and it does not play reliably
