@@ -40,9 +40,7 @@
 
       outputTitle: 'What you receive',
       secNaming: 'Our English translation',
-      glossXin: 'Prosperity through wealth. Three 金 stacked. No English equivalent.',
-      glossDa: 'To reach, to attain.',
-      glossZhongQi: 'Heavy vehicle. The standard suffix in the industry.',
+      labelSource: 'Chinese name',
       labelLiteral: 'Word for word',
       labelDelivered: 'Delivered',
       metaBrand: 'Brand',
@@ -78,9 +76,7 @@
 
       outputTitle: '您收到的',
       secNaming: '我们的英文翻译',
-      glossXin: '三个「金」字，寓意财富兴盛。英文中没有对应词。',
-      glossDa: '到达，达成。',
-      glossZhongQi: '重型汽车，行业通用后缀。',
+      labelSource: '中文名称',
       labelLiteral: '逐字直译',
       labelDelivered: '交付',
       metaBrand: '品牌',

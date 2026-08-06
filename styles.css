@@ -65,7 +65,7 @@ body {
 
 img, video { display: block; max-width: 100%; }
 button, input { font: inherit; color: inherit; }
-ul, ol { list-style: none; }
+ul { list-style: none; }
 
 :focus-visible {
   outline: 2px solid var(--navy);
@@ -300,24 +300,14 @@ ul, ol { list-style: none; }
 /* ---------- The naming work ---------- */
 .naming { margin-bottom: var(--s6); }
 
-/* Character, romanisation, sense. One hairline row each, like the meta strip. */
-.gloss {
-  border: 1px solid var(--rule);
-  margin-bottom: var(--s5);
+/* The name as the client wrote it, set at the same size as the delivered name
+   so the two ends of the exchange carry equal weight and the reader can put
+   them side by side. The characters stand alone: no romanisation and no gloss,
+   because that reading is done out loud. */
+.value--source {
+  font-size: var(--t-lg);
+  letter-spacing: 0.02em;
 }
-.gloss li {
-  display: grid;
-  grid-template-columns: minmax(2.75rem, auto) minmax(3.5rem, auto) 1fr;
-  align-items: baseline;
-  gap: var(--s2) var(--s4);
-  padding: var(--s3) var(--s4);
-  border-bottom: 1px solid var(--rule);
-}
-.gloss li:last-child { border-bottom: 0; }
-
-.gloss-char { font-size: var(--t-md); color: var(--ink); }
-.gloss-pinyin { font-size: var(--t-sm); color: var(--ink-2); }
-.gloss-sense { font-size: var(--t-sm); color: var(--ink-2); }
 
 /* What a machine makes of the name. Set below the delivered name in weight and
    colour, because it is the rejected option, but still plainly readable: the
@@ -435,10 +425,6 @@ ul, ol { list-style: none; }
   .site-footer { padding: var(--s4); }
   .brand-name { font-size: var(--t-md); }
   .brand-mark { height: 36px; }
-
-  /* The sense drops to its own line rather than being squeezed into a column. */
-  .gloss li { grid-template-columns: minmax(2.75rem, auto) 1fr; }
-  .gloss-sense { grid-column: 1 / -1; }
 }
 
 /* Touch devices get full-size tap targets. Kept off pointer:fine so the desktop

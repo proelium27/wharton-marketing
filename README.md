@@ -43,7 +43,7 @@ All of it is plain markup in `index.html`:
 | Business name and tagline | The two `.value` elements in section B, and the brand cell in the meta strip |
 | Industry | Section C, and the matching cell in the meta strip |
 | Video size | Section D, the meta strip, and `data-ratio` on `.frame` |
-| The naming work | The `.naming` block in panel 02: the `.gloss` list, then the word-for-word and delivered names |
+| The naming work | The `.naming` block in panel 02: the Chinese name, the word-for-word rendering, and the delivered name |
 
 If you change the video size, update `data-ratio` on `.frame` to match, or the
 advertisement will sit letterboxed inside the wrong shape. Valid values are `16:9`,
@@ -73,6 +73,12 @@ vehicles.
 What was delivered is **XINDA Trucks**, with the tagline *Built to haul. Built to
 last.* It keeps the pinyin, because buyers meet it on documents and parts anyway;
 drops 鑫, because nothing in English carries it; and uses the plain category word.
+
+**None of that reasoning is printed on the page, and it should not be.** Panel 02
+shows the characters, the word-for-word rendering, and the delivered name, and
+nothing else. The pinyin and the sense of each character are explained out loud by
+whoever is presenting. Do not add a gloss, a romanisation, or an annotation back
+into that section.
 
 The tagline on the input side, 载得动，跑得远, is wording chosen to suit the truck
 photos rather than a real client's copy.
