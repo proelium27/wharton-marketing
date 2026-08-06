@@ -20,7 +20,6 @@ the page, neutrals tinted toward the accent hue so nothing reads as dead grey.
 | `--navy` | `#12386b` | Accent: primary button, focus ring, active state, step numbers |
 | `--navy-deep` | `#0d2a51` | Accent hover/active |
 | `--navy-tint` | `#eef2f7` | Selected background, progress track fill |
-| `--danger` | `#8f2c2c` | Invalid file errors only |
 
 The accent is reserved for primary action, current selection, focus, and state
 indication. It is never decoration.
@@ -81,9 +80,9 @@ The page is a case study, so nearly everything is printed content rather than a
 control. What the client supplied is set in `.value` at `--t-md`, under an uppercase
 `--t-xs` label. Photos are a square-cropped grid at 1px hairline borders.
 
-The only controls are the language toggle and the temporary video loader. Each ships
-default, hover, focus-visible, and active. Focus is a 2px `--navy` outline at 2px
-offset, square.
+The only controls are the language toggle, the video's own player, and the download
+link. Each ships default, hover, focus-visible, and active. Focus is a 2px `--navy`
+outline at 2px offset, square.
 
 Buttons: 1px border, square, uppercase `--t-xs`, navy text on paper, flipping to
 `--navy-deep` on hover.

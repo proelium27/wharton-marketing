@@ -58,7 +58,7 @@
 
       <div class="field">
         <p class="label" data-i18n="labelName">Business name 公司名称</p>
-        <p class="value" lang="zh">东方商用车</p>
+        <p class="value" lang="zh">鑫达重汽</p>
       </div>
 
       <div class="field">
@@ -99,7 +99,7 @@
     <dl class="meta">
       <div class="meta-cell">
         <dt class="micro" data-i18n="metaBrand">Brand</dt>
-        <dd lang="zh">东方商用车</dd>
+        <dd lang="zh">鑫达重汽</dd>
       </div>
       <div class="meta-cell">
         <dt class="micro" data-i18n="metaIndustry">Industry</dt>
@@ -115,17 +115,29 @@
       </div>
     </dl>
 
+    <!-- The naming work. The delivered name and tagline are fixed in both
+         languages, because the English brand is the thing being sold. -->
+    <div class="naming">
+      <h3 class="legend" data-i18n="secNaming">Our English translation</h3>
+
+      <div class="field">
+        <p class="label" data-i18n="labelSource">Chinese name</p>
+        <p class="value value--source" lang="zh">鑫达重汽</p>
+      </div>
+
+      <div class="field">
+        <p class="label" data-i18n="labelDelivered">Delivered</p>
+        <p class="value value--delivered">XINDA Trucks</p>
+        <p class="tagline">Built to haul. Built to last.</p>
+      </div>
+    </div>
+
     <div class="stage">
       <div class="frame" data-ratio="9:16">
 
-        <!-- Shown until assets/advertisement.mp4 exists -->
+        <!-- Fallback, shown only if assets/advertisement.mp4 cannot be loaded -->
         <div class="state state--empty" id="state-empty">
           <p class="state-title" data-i18n="emptyTitle">Your advertisement</p>
-          <div class="slot-actions">
-            <button type="button" class="btn btn--ghost btn--sm" id="pick-video" data-i18n="pickVideo">Load a video file</button>
-          </div>
-          <input type="file" id="video-input" class="file-input" accept="video/*">
-          <p class="error" id="video-error" role="alert" hidden></p>
         </div>
 
         <video id="ad-video" class="ad-video" controls playsinline preload="metadata" hidden></video>
