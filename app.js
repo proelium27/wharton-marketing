@@ -17,10 +17,9 @@
      The client's own words (鑫达重汽, 载得动，跑得远) stay in Chinese in both
      modes. They are the brand as it exists today, not interface text.
 
-     Three English strings are fixed the same way, in index.html rather than
-     here: the word-for-word rendering of the name, and the delivered name and
-     tagline. The first is what an English-speaking buyer actually reads, and
-     the other two are the deliverable itself.
+     The delivered name and tagline (XINDA Trucks, Built to haul. Built to
+     last.) are fixed the same way, in index.html rather than here. They stay
+     English in both modes because they are the deliverable itself.
      --------------------------------------------------------------------- */
 
   var COPY = {
@@ -41,7 +40,6 @@
       outputTitle: 'What you receive',
       secNaming: 'Our English translation',
       labelSource: 'Chinese name',
-      labelLiteral: 'Word for word',
       labelDelivered: 'Delivered',
       metaBrand: 'Brand',
       metaIndustry: 'Industry',
@@ -77,7 +75,6 @@
       outputTitle: '您收到的',
       secNaming: '我们的英文翻译',
       labelSource: '中文名称',
-      labelLiteral: '逐字直译',
       labelDelivered: '交付',
       metaBrand: '品牌',
       metaIndustry: '行业',

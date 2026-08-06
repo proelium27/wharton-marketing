@@ -53,9 +53,8 @@ Text that appears in both languages lives in the `COPY` block in `app.js`, keyed
 the `data-i18n` attributes. Two kinds of wording are deliberately left out of it and
 hardcoded in `index.html` instead, because they are content rather than interface:
 the client's Chinese name and tagline, which stay Chinese in both modes because they
-are the brand as it exists today, and the English word-for-word, delivered name, and
-delivered tagline, which stay English in both modes because the English brand is the
-thing being sold.
+are the brand as it exists today, and the delivered English name and tagline, which
+stay English in both modes because the English brand is the thing being sold.
 
 ## The worked example
 
@@ -75,10 +74,10 @@ last.* It keeps the pinyin, because buyers meet it on documents and parts anyway
 drops 鑫, because nothing in English carries it; and uses the plain category word.
 
 **None of that reasoning is printed on the page, and it should not be.** Panel 02
-shows the characters, the word-for-word rendering, and the delivered name, and
-nothing else. The pinyin and the sense of each character are explained out loud by
-whoever is presenting. Do not add a gloss, a romanisation, or an annotation back
-into that section.
+shows the Chinese name and the delivered English name, and nothing else. The
+word-for-word rendering, the pinyin, and the sense of each character are all
+delivered out loud by whoever is presenting. Do not add a literal translation, a
+gloss, a romanisation, or an annotation back into that section.
 
 The tagline on the input side, 载得动，跑得远, is wording chosen to suit the truck
 photos rather than a real client's copy.
