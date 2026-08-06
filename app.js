@@ -48,13 +48,11 @@
       sourceCount: '6 images',
 
       emptyTitle: 'Your advertisement',
-      pickVideo: 'Load a video file',
       download: 'Download',
 
       footerRight: 'Wharton Global Youth Program',
 
       altPhoto: function (n) { return 'Product photograph ' + n + ' of 6'; },
-      errVideoType: 'That file is not a video.',
       annPlaying: 'Advertisement loaded.'
     },
 
@@ -83,13 +81,11 @@
       sourceCount: '6 张图片',
 
       emptyTitle: '您的广告',
-      pickVideo: '载入视频文件',
       download: '下载',
 
       footerRight: '沃顿全球青年项目',
 
       altPhoto: function (n) { return '产品照片 ' + n + ' / 6'; },
-      errVideoType: '该文件不是视频。',
       annPlaying: '广告已载入。'
     }
   };
@@ -102,14 +98,10 @@
 
   var stateEmpty = $('state-empty');
   var adVideo = $('ad-video');
-  var pickVideo = $('pick-video');
-  var videoInput = $('video-input');
-  var videoError = $('video-error');
   var downloadBtn = $('download-btn');
   var liveRegion = $('live-region');
 
   var lang = 'en';
-  var videoObjectUrl = null;
 
   var t = function () { return COPY[lang]; };
 
@@ -138,9 +130,6 @@
       btn.classList.toggle('is-active', on);
       btn.setAttribute('aria-pressed', on ? 'true' : 'false');
     });
-
-    // Any error still on screen would be in the previous language.
-    videoError.hidden = true;
   }
 
   document.querySelectorAll('.lang-btn').forEach(function (btn) {
@@ -162,13 +151,12 @@
     stateEmpty.hidden = true;
     adVideo.hidden = false;
     downloadBtn.hidden = false;
-    videoError.hidden = true;
 
     announce(t().annPlaying);
   }
 
-  // Resolves false when the file is not there, which is the expected case
-  // until the finished advertisement is committed.
+  // Resolves false only if the advertisement cannot be loaded, which leaves the
+  // fallback state on screen rather than an empty frame.
   function probeVideo() {
     return new Promise(function (resolve) {
       var probe = document.createElement('video');
@@ -188,58 +176,6 @@
       probe.src = VIDEO_PATH;
     });
   }
-
-  /* ---------------------------------------------------------------------
-     Loading a video by hand, for previewing before the file is committed.
-     Remove this block once assets/advertisement.mp4 is in the repository.
-     --------------------------------------------------------------------- */
-
-  function acceptVideo(file) {
-    if (!file || !/^video\//.test(file.type)) {
-      videoError.textContent = t().errVideoType;
-      videoError.hidden = false;
-      announce(t().errVideoType);
-      return;
-    }
-    if (videoObjectUrl) URL.revokeObjectURL(videoObjectUrl);
-    videoObjectUrl = URL.createObjectURL(file);
-    showVideo(videoObjectUrl, file.name);
-  }
-
-  pickVideo.addEventListener('click', function () { videoInput.click(); });
-
-  videoInput.addEventListener('change', function () {
-    if (videoInput.files.length) acceptVideo(videoInput.files[0]);
-    videoInput.value = '';
-  });
-
-  ['dragenter', 'dragover'].forEach(function (evt) {
-    stateEmpty.addEventListener(evt, function (e) {
-      e.preventDefault();
-      stateEmpty.classList.add('is-dragging');
-    });
-  });
-  ['dragleave', 'drop'].forEach(function (evt) {
-    stateEmpty.addEventListener(evt, function (e) {
-      e.preventDefault();
-      if (evt === 'dragleave' && stateEmpty.contains(e.relatedTarget)) return;
-      stateEmpty.classList.remove('is-dragging');
-    });
-  });
-  stateEmpty.addEventListener('drop', function (e) {
-    if (e.dataTransfer && e.dataTransfer.files.length) acceptVideo(e.dataTransfer.files[0]);
-  });
-
-  // A stray drop anywhere else must not navigate away from the page.
-  ['dragover', 'drop'].forEach(function (evt) {
-    window.addEventListener(evt, function (e) {
-      if (!stateEmpty.contains(e.target)) e.preventDefault();
-    });
-  });
-
-  window.addEventListener('beforeunload', function () {
-    if (videoObjectUrl) URL.revokeObjectURL(videoObjectUrl);
-  });
 
   /* ---------------------------------------------------------------------
      Boot

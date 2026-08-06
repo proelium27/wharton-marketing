@@ -22,15 +22,22 @@ Double-click `index.html`, or serve the folder:
 python3 -m http.server 8000
 ```
 
-## Add the advertisement
+## The advertisement
 
-Put the finished ad at `assets/advertisement.mp4`. It then fills the frame in panel
-02 automatically, with a download link beneath it.
+The finished ad is committed at `assets/advertisement.mp4` and fills the frame in
+panel 02 on load, with a download link beneath it. It is silent, 19.5 seconds, and
+720×1280, which is the 9:16 the frame is set to.
 
-Until that file exists, the frame shows **"Your advertisement"** and a temporary
-**Load a video file** button for previewing a file from your computer. Delete the
-marked block in `app.js` to remove that control once the real video is committed.
+To replace it, overwrite that file. It must be H.264 in MP4, not HEVC: HEVC is what
+phones record and what Messages and AirDrop hand you, and it does not play reliably
+outside Safari. Converting needs no extra software —
 
+```bash
+avconvert --source new.mov --output assets/advertisement.mp4 \
+  --preset Preset1280x720 --replace
+```
+
+That preset keeps a portrait video at its native size rather than shrinking it.
 Details in [`assets/README.md`](assets/README.md).
 
 ## Change the case study

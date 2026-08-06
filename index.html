@@ -135,14 +135,9 @@
     <div class="stage">
       <div class="frame" data-ratio="9:16">
 
-        <!-- Shown until assets/advertisement.mp4 exists -->
+        <!-- Fallback, shown only if assets/advertisement.mp4 cannot be loaded -->
         <div class="state state--empty" id="state-empty">
           <p class="state-title" data-i18n="emptyTitle">Your advertisement</p>
-          <div class="slot-actions">
-            <button type="button" class="btn btn--ghost btn--sm" id="pick-video" data-i18n="pickVideo">Load a video file</button>
-          </div>
-          <input type="file" id="video-input" class="file-input" accept="video/*">
-          <p class="error" id="video-error" role="alert" hidden></p>
         </div>
 
         <video id="ad-video" class="ad-video" controls playsinline preload="metadata" hidden></video>

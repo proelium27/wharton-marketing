@@ -17,7 +17,6 @@
   --navy:        #12386b;
   --navy-deep:   #0d2a51;
   --navy-tint:   #eef2f7;
-  --danger:      #8f2c2c;
 
   /* Type */
   --sans: "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", -apple-system,
@@ -360,27 +359,8 @@ ul { list-style: none; }
   align-self: stretch;
   justify-self: stretch;
 }
-.state--empty.is-dragging {
-  border-color: var(--navy);
-  border-style: solid;
-  background: var(--navy-tint);
-}
 
 .state-title { font-size: var(--t-sm); font-weight: 600; color: var(--ink-2); }
-.slot-actions { margin-top: var(--s3); }
-
-.file-input {
-  position: absolute; width: 1px; height: 1px;
-  opacity: 0; pointer-events: none;
-}
-
-.error {
-  font-size: var(--t-sm);
-  color: var(--danger);
-  border: 1px solid var(--danger);
-  padding: var(--s2) var(--s3);
-  margin-top: var(--s3);
-}
 
 .ad-video {
   grid-area: 1 / 1;

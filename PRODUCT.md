@@ -80,9 +80,9 @@ in the interface may use one.
 3. **One screen.** Input on the left, output on the right. No navigation, no
    marketing sections, nothing to scroll past.
 4. **Nothing is interactive except the language toggle.** No inputs, no buttons that
-   act on content, nothing a reader could mistake for self-serve software. The only
-   exception is the temporary control for loading the advertisement, which
-   disappears once the file is committed.
+   act on content, nothing a reader could mistake for self-serve software. Playing
+   the finished advertisement and downloading it are the only other things a reader
+   can do, and neither acts on content.
 5. **Never claim automation.** No progress bars, no rendering steps, no wording that
    suggests the advertisement is produced by this page. People make the ad.
 5. **Placeholders stay obviously placeholder.** Bracketed and labelled, so no one
