@@ -10,10 +10,16 @@ To change them, drop new files in and edit the `.gallery` list in `index.html`.
 ## The advertisement video
 
 `advertisement.mp4` is the finished advertisement, shown in the frame in panel 02
-with a download link beneath it. Silent, 19.5 seconds, H.264, 720×1280.
+with a download link beneath it. 19.5 seconds, H.264 video with AAC audio, 720×1280.
+It carries a voiceover over music.
 
 To replace it, overwrite the file under the same name. Nothing else to change. To
 use a different filename or format, change `VIDEO_PATH` at the top of `app.js`.
+
+**Sound:** the video has audio and the player is muted by nothing — it simply does
+not autoplay. Do not add `autoplay`, and do not add `muted` to make autoplay work:
+either one turns a room's first impression into a surprise, and a muted autoplay
+would hide that the ad has a voiceover at all.
 
 **Format:** it must be H.264 in MP4. Phones record HEVC, and that is what arrives
 over Messages or AirDrop — Safari plays it, other browsers frequently do not, so a
