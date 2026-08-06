@@ -14,8 +14,13 @@
   /* ---------------------------------------------------------------------
      Copy, in both languages
 
-     The client's own words (东方商用车, 载得动，跑得远) stay in Chinese in both
+     The client's own words (鑫达重汽, 载得动，跑得远) stay in Chinese in both
      modes. They are the brand as it exists today, not interface text.
+
+     Three English strings are fixed the same way, in index.html rather than
+     here: the word-for-word rendering of the name, and the delivered name and
+     tagline. The first is what an English-speaking buyer actually reads, and
+     the other two are the deliverable itself.
      --------------------------------------------------------------------- */
 
   var COPY = {
@@ -34,6 +39,12 @@
       platReels: 'TikTok & Reels',
 
       outputTitle: 'What you receive',
+      secNaming: 'Our English translation',
+      glossXin: 'Prosperity through wealth. Three 金 stacked. No English equivalent.',
+      glossDa: 'To reach, to attain.',
+      glossZhongQi: 'Heavy vehicle. The standard suffix in the industry.',
+      labelLiteral: 'Word for word',
+      labelDelivered: 'Delivered',
       metaBrand: 'Brand',
       metaIndustry: 'Industry',
       metaPlatform: 'Video size',
@@ -66,6 +77,12 @@
       platReels: 'TikTok 与 Reels',
 
       outputTitle: '您收到的',
+      secNaming: '我们的英文翻译',
+      glossXin: '三个「金」字，寓意财富兴盛。英文中没有对应词。',
+      glossDa: '到达，达成。',
+      glossZhongQi: '重型汽车，行业通用后缀。',
+      labelLiteral: '逐字直译',
+      labelDelivered: '交付',
       metaBrand: '品牌',
       metaIndustry: '行业',
       metaPlatform: '视频尺寸',

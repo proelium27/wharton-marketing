@@ -40,23 +40,42 @@ All of it is plain markup in `index.html`:
 | What | Where |
 |---|---|
 | The six photos | `assets/example/1.jpg` … `6.jpg`, listed in the `.gallery` list |
-| Business name and tagline | The two `.value` elements in section B |
+| Business name and tagline | The two `.value` elements in section B, and the brand cell in the meta strip |
 | Industry | Section C, and the matching cell in the meta strip |
 | Video size | Section D, the meta strip, and `data-ratio` on `.frame` |
+| The naming work | The `.naming` block in panel 02: the `.gloss` list, then the word-for-word and delivered names |
 
 If you change the video size, update `data-ratio` on `.frame` to match, or the
 advertisement will sit letterboxed inside the wrong shape. Valid values are `16:9`,
 `1:1`, `4:5`, and `9:16`.
 
 Text that appears in both languages lives in the `COPY` block in `app.js`, keyed by
-the `data-i18n` attributes. The client's own Chinese wording is deliberately not
-translated: it stays in Chinese in both modes, because it is the brand as it exists
-today rather than interface text.
+the `data-i18n` attributes. Two kinds of wording are deliberately left out of it and
+hardcoded in `index.html` instead, because they are content rather than interface:
+the client's Chinese name and tagline, which stay Chinese in both modes because they
+are the brand as it exists today, and the English word-for-word, delivered name, and
+delivered tagline, which stay English in both modes because the English brand is the
+thing being sold.
 
-## Still a placeholder
+## The worked example
 
-The business name and tagline in the case study are placeholder wording chosen to
-suit the truck photos, not a real client's copy.
+The case study runs on one name, 鑫达重汽, and the whole argument for the service is
+in the gap between two ways of putting it into English.
+
+Word for word it comes out as **Prosperity-Gold Reach Heavy Automobile**. That is not
+a strawman — it is close to what machine translation actually returns, and to an
+English-speaking buyer it reads as either nonsense or a scam. The Chinese name is
+meanwhile completely respectable and signals exactly the right things at home: 鑫 is
+prosperity through wealth, three 金 stacked, and it is extremely common in company
+names; 达 is to reach or attain; 重汽 is the ordinary industry suffix for heavy
+vehicles.
+
+What was delivered is **XINDA Trucks**, with the tagline *Built to haul. Built to
+last.* It keeps the pinyin, because buyers meet it on documents and parts anyway;
+drops 鑫, because nothing in English carries it; and uses the plain category word.
+
+The tagline on the input side, 载得动，跑得远, is wording chosen to suit the truck
+photos rather than a real client's copy.
 
 ## What is here
 
