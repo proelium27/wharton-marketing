@@ -24,13 +24,20 @@ the page, neutrals tinted toward the accent hue so nothing reads as dead grey.
 The accent is reserved for primary action, current selection, focus, and state
 indication. It is never decoration.
 
-### The logo blues
+### The logo colours
 
-The logo runs its own gradient, roughly `#0d2898` through `#4fa3e0`. These are
-brighter and more saturated than `--navy`, and they are deliberately not reconciled
-with it: the artwork is fixed, and the interface palette stays as it is. They exist
-only inside the logo image and are not tokens. Nothing in the interface may sample
-them, and `--navy` remains the only blue the UI draws with.
+The mark is a silver gradient, roughly `#656b7b` through `#ffffff`, standing on the
+artwork's own near-black navy field, `#011233`. That field is darker than
+`--navy-deep` and it is deliberately not reconciled with it: the artwork is fixed,
+and the interface palette stays as it is. Both values exist only inside the logo
+image and are not tokens. Nothing in the interface may sample them, and `--navy`
+remains the only blue the UI draws with.
+
+The field ships with the mark rather than being knocked out to transparency, which
+is a change from the earlier blue logo. It is forced by the artwork: silver is
+defined by contrast against something dark, and the same bird on `--paper` would be
+a pale grey outline on white. So the mark is a tile — a navy square with the bird
+inside it — and it carries its own background everywhere it appears.
 
 ## Typography
 
@@ -58,9 +65,10 @@ No `box-shadow` anywhere. Depth comes from 1px hairlines and the panel tint.
 No gradients drawn in CSS. No `backdrop-filter`.
 
 The logo is the single exception, and it is a deliberate one: the supplied artwork
-is a blue gradient, and it ships as drawn rather than being flattened to `--navy`.
-It is a placed image, not a style — no rule elsewhere may reach for `linear-gradient`
-on the strength of it.
+is a silver gradient on a navy field, and it ships as drawn rather than being
+flattened to `--navy`. It is a placed image, not a style — no rule elsewhere may
+reach for `linear-gradient` on the strength of it, and the navy square it sits on is
+the artwork's own, not a filled block the CSS is entitled to repeat.
 
 ## Spacing
 

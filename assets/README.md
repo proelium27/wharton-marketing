@@ -45,15 +45,23 @@ an HEVC file is the usual cause.
 
 ## The logo
 
-`logo.png` is the header mark and the favicon: the bird from the supplied artwork,
-196×176, on a transparent background. The wordmark that sits under the bird in the
-original file is deliberately not here — the header already sets "East 2 West" and
-"Marketing Agency" as text, so including it would print the name twice.
+`logo.png` is the header mark and the favicon: the silver bird from the supplied
+artwork, 256×256, standing on the artwork's own navy field. The wordmark that sits
+under the bird in the original file is deliberately not here — the header already
+sets "East 2 West" and "Marketing Agency" as text, so including it would print the
+name twice.
 
 It is sized in CSS by height (44px in the header, 36px on narrow screens) with
-`width: auto`, so it keeps its proportions. The file is roughly four times that tall
-so it stays sharp on high-density displays.
+`width: auto`, so it keeps its proportions. The file is several times that tall so it
+stays sharp on high-density displays, and it is square so the header reserves a
+44×44 box for it.
 
-To replace it, keep the transparent background: the mark sits on `--paper` in the
-header but on `--panel` elsewhere, and a baked-in white background would show as a
-pale block against the tint.
+**Keep the navy background.** The earlier blue logo was knocked out to transparency;
+this one must not be. Silver is only silver against something dark — knock the field
+out and the bird becomes a pale grey outline that all but disappears on `--paper`.
+The mark is a tile, and it brings its own background wherever it is placed.
+
+To replace it with a new crop of the same artwork, the bird occupies x 320–905,
+y 221–750 of the 1254×1254 original and the wordmark begins at y 831, so padding
+below the bird has about 80px to work with before the letters intrude. Centre that
+crop on a square filled with `#011233`, the field colour, and the seam will not show.
