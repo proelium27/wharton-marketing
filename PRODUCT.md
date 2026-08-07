@@ -54,10 +54,12 @@ client's product moves from an eastern market to a western one, and the agency i
 the passage. It is set in English in both language modes, because the English brand
 is the thing being sold.
 
-The logo is a stylised bird in a blue gradient, at `assets/logo.png`. It is supplied
-artwork, not a design decision this repository gets to make: do not redraw it,
-recolour it, or substitute a wordmark for it. The header shows the bird alone,
-because the name and role are already set as text beside it.
+The logo is a faceted bird drawn in silver line on a deep navy field, at
+`assets/logo.png`. It is supplied artwork, not a design decision this repository gets
+to make: do not redraw it, recolour it, or substitute a wordmark for it. The header
+shows the bird alone, because the name and role are already set as text beside it —
+and it shows it on its navy tile, because a silver mark needs a dark ground to be
+seen at all.
 
 White surface, one dark blue accent, hairline rules, square corners. No shadows, no
 rounded buttons, no decorative imagery. The logo is the one gradient; nothing else
